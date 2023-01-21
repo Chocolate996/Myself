@@ -1,0 +1,486 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+body {
+    min-height: 100vh;
+    background-color: white;
+}
+
+mark {
+    background-color: transparent;
+    color: inherit;
+    background-image: linear-gradient(var(--default-color-difference), var(--default-color-difference));
+    background-repeat: no-repeat;
+    background-size: 0% 38%;
+    background-position: 0 100%;
+}
+
+mark.animate {
+    animation: 2s highlight var(--default-bezier-start) forwards;
+    animation-delay: 1s;
+}
+
+@keyframes highlight {
+    to {
+        background-size: 100% 38%;
+    }
+}
+
+.index {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.nav {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    height: 70px;
+    background-color: var(--box-white);
+    mix-blend-mode: difference;
+    display: flex;
+    align-items: center;
+}
+
+.nav-content {
+    width: 100%;
+    height: 30px;
+    margin: 0 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-content>a {
+    height: 100%;
+}
+
+.nav-box {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.nav-box>a>div {
+    margin-left: 30px;
+    width: 75px;
+    padding: 0;
+    height: 30px;
+}
+
+.title {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.title-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.out-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateX(0)translateY(-10vh);
+    animation: 10s bgout var(--default-bezier-end) infinite;
+}
+
+@keyframes bgout {
+    25% {
+        transform: translateX(10vh)translateY(0);
+    }
+
+    60% {
+        transform: translateX(0)translateY(10vh);
+    }
+
+    75% {
+        transform: translateX(-10vh)translateY(0);
+    }
+
+    100% {
+        transform: translateX(0)translateY(-10vh);
+    }
+}
+
+.box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 10px var(--box-black) solid;
+    animation: 4s bg var(--default-bezier-end) infinite;
+}
+
+.box:nth-child(2) {
+    animation-delay: 0.8s;
+}
+
+.box:nth-child(3) {
+    animation-delay: 1.6s;
+}
+
+.box:nth-child(4) {
+    animation-delay: 2.4s;
+}
+
+.box:nth-child(5) {
+    animation-delay: 3.2s;
+}
+
+@keyframes bg {
+    0% {
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    70% {
+        background-color: transparent;
+    }
+
+    75% {
+        background-color: var(--box-black);
+    }
+
+    100% {
+        transform: scale(0%);
+        border: 50px var(--box-black) solid;
+        background-color: var(--box-black);
+    }
+}
+
+.me::after {
+    content: "Hey!这里是爷的个人页面";
+    animation: 4s txt var(--default-bezier-end) forwards;
+}
+
+.meme::after {
+    content: "";
+    animation: 0.5s awa var(--default-bezier-end) forwards;
+    animation-delay: 5s;
+}
+
+@keyframes awa {
+    20% {
+        content: "|";
+    }
+
+    25% {
+        content: "a|";
+    }
+
+    50% {
+        content: "aw|";
+    }
+
+    95% {
+        content: "awa|";
+    }
+
+    100% {
+        content: "awa";
+    }
+}
+
+@keyframes txt {
+
+    50% {
+        content: "Hey!这里是爷|的个人页面";
+    }
+
+    75% {
+        content: "Hey!这里是|的个人页面";
+    }
+
+    85% {
+        content: "Hey!这里是w|的个人页面";
+    }
+
+    90% {
+        content: "Hey!这里是wo|的个人页面";
+    }
+
+    100% {
+        content: "Hey!这里是我的个人页面";
+    }
+}
+
+.url-box-color {
+    background-color: var(--default-color);
+    padding: 10px 25px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-black);
+    font-weight: var(--fw-Semibold);
+    transition: 0.3s var(--default-bezier-start);
+}
+
+.url-box-color:hover {
+    background-color: var(--default-color-focus);
+}
+
+.url-box-color-difference {
+    background-color: var(--default-color-difference);
+    padding: 10px 25px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-white);
+    font-weight: var(--fw-Semibold);
+    transition: 0.3s var(--default-bezier-start);
+}
+
+.url-box-color-difference:hover {
+    background-color: var(--default-color-difference-focus);
+}
+
+.url-box-transparent {
+    background-color: var(--box-white);
+    padding: 10px 25px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-black);
+    font-weight: var(--fw-Semibold);
+    transition: 0.3s var(--default-bezier-start);
+}
+
+.url-box-transparent:hover {
+    background-color: var(--box-white-1);
+}
+
+.url-box-mix {
+    background-color: var(--default-color);
+    padding: 10px 25px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-black);
+    mix-blend-mode: difference;
+    transition: 0.3s var(--default-bezier-start);
+}
+
+.url-box-mix:hover {
+    background-color: var(--default-color-focus);
+}
+
+.url-box-blur {
+    background-color: var(--box-white-3);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    padding: 10px 25px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-white);
+    text-shadow: 0 0 10px var(--shadow-2);
+    font-weight: var(--fw-Semibold);
+    transition: 0.3s var(--default-bezier-start);
+}
+
+.url-box-color:active, .url-box-transparent:active, .url-box-blur:active {
+    opacity: 0.5;
+    transform: scale(90%);
+    transition: 0.1s var(--default-bezier-start);
+}
+
+.txt-t {
+    color: var(--default-color);
+}
+
+.littlebox::after {
+    position: absolute;
+    bottom: -5px;
+    right: -15px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--default-color);
+    mix-blend-mode: difference;
+    content: "";
+}
+
+.littlebox1 {
+    margin-top: 100px;
+}
+
+.littlebox1::after {
+    position: absolute;
+    top: 0px;
+    right: -15px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--box-white);
+    mix-blend-mode: difference;
+    content: "";
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 75px;
+    background-color: var(--box-black);
+}
+
+.grid {
+    display: grid;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    grid-column-gap: 25px;
+    grid-row-gap: 50px;
+    padding-top: 0;
+    padding-bottom: 0;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.colorbox {
+    position: relative;
+    grid-column: span 2;
+    border: 10px var(--default-color) solid;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 25px;
+    background-color: var(--box-white);
+}
+
+.colorbox:first-child::before {
+    position: absolute;
+    left: -40px;
+    bottom: -40px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--default-color-difference);
+    mix-blend-mode: difference;
+    content: "";
+}
+
+.colorbox:nth-child(3)::before {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--box-white);
+    mix-blend-mode: difference;
+    content: "";
+}
+
+.show {
+    width: 100%;
+    height: 100%;
+}
+
+.up {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.upup {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(100px);
+    transition: 0.3s var(--default-bezier-start);
+}
+
+.upup:hover {
+    transform: translateY(0);
+}
+
+.footer {
+    padding: 50px 75px;
+    background-color: var(--box-white);display: flex;justify-content: center;
+}
+
+/* iThink的统一调用库 */
+:root {
+    --default-color: #06EB00;
+    --default-color-difference: #f914ff;
+    --default-color-difference-focus: #ae00b4;
+    --default-colo-16: #06EB00;
+    --default-color-opacity: #08eb0000;
+    --default-color-focus: #74fa6f;
+    --default-color-none: #8ca88b;
+    --default-color-difference-none: #a279a3;
+    --default-color-shadow: #065a0541;
+
+    --opacity: transparent;
+
+    --text-white: rgb(255, 255, 255);
+    --text-white-1: rgba(255, 255, 255, 0.75);
+    --text-white-2: rgba(255, 255, 255, 0.50);
+    --text-white-3: rgba(255, 255, 255, 0.25);
+    --text-black: rgb(0, 0, 0);
+    --text-black-1: rgba(0, 0, 0, 0.80);
+    --text-black-2: rgba(0, 0, 0, 0.50);
+    --text-black-3: rgba(0, 0, 0, 0.25);
+
+    --box-white: rgba(255, 255, 255, 1);
+    --box-white-1: rgba(255, 255, 255, 0.75);
+    --box-white-2: rgba(255, 255, 255, 0.50);
+    --box-white-3: rgba(255, 255, 255, 0.30);
+    --box-white-4: rgba(255, 255, 255, 0.25);
+    --box-white-5: rgba(255, 255, 255, 0.15);
+    --box-white-6: rgba(255, 255, 255, 0.10);
+    --box-black: rgba(0, 0, 0, 1);
+    --box-black-1: rgba(0, 0, 0, 0.75);
+    --box-black-2: rgba(0, 0, 0, 0.50);
+    --box-black-3: rgba(0, 0, 0, 0.25);
+    --box-black-4: rgba(0, 0, 0, 0.15);
+    --box-black-5: rgba(0, 0, 0, 0.10);
+
+    --shadow-1: rgba(0, 0, 0, 0.25);
+    --shadow-2: rgba(0, 0, 0, 0.20);
+    --shadow-3: rgba(0, 0, 0, 0.15);
+    --shadow-4: rgba(0, 0, 0, 0.10);
+    --shadow-5: rgba(0, 0, 0, 0.05);
+
+    /* 祖传动画曲线 */
+    --default-bezier-color: cubic-bezier(.6, 0, .5, 1);
+    --default-bezier-start: cubic-bezier(.5, 0, .25, 1);
+    --default-bezier-end: cubic-bezier(.5, 0, .5, 1);
+    --default-bezier-nav-start: cubic-bezier(.25, .1, 0, 1);
+    --default-bezier-nav-end: cubic-bezier(.5, .25, .4, 1);
+    --default-bezier-ios-start: cubic-bezier(.25, 1, .25, 1);
+    --default-bezier-ios-end: cubic-bezier(.48, 1.23, .25, 1);
+    --default-bezier-apple-nav: cubic-bezier(0.28, 0.11, 0.32, 1);
+}
