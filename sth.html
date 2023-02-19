@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <style>
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: unset;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #f5f5f7;
+        }
+
+        :root {
+            font-family: 'Inter', sans-serif;
+        }
+
+        @supports (font-variation-settings: normal) {
+            :root {
+                font-family: 'Inter var', sans-serif;
+            }
+        }
+
+        .font-style,
+        body {
+            font-family: 'Inter var', sans-serif;
+        }
+
+        .font-serif {
+            font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+        }
+
+        .font-mono {
+            font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        .outside {
+            padding: 25px;
+        }
+
+        .side {
+            position: relative;
+            margin-bottom: 25px;
+            border-radius: 20px;
+            border: 1px rgb(224, 224, 224) solid;
+            background-color: white;
+            box-shadow: 0px 5px 20px -10px rgba(0, 0, 0, 0.25), 0px 10px 20px -15px rgba(0, 0, 0, 0.25);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .side:last-child {
+            margin-bottom: 0;
+        }
+
+        .side-gray {
+            border: 1px rgb(110, 110, 110) solid;
+            background-color: gray;
+        }
+
+        .sidename {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-weight: bold;
+            font-size: 32px;
+            padding: 5px 15px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            color: var(--text-black-3);
+            transition: 0.2s var(--default-bezier-start);
+        }
+
+        .sidename:hover {
+            background-color: var(--shadow-5);
+        }
+
+        .side-others>.sidename {
+            border: 0px var(--default-color) solid;
+        }
+
+
+        .side-gray>.sidename {
+            color: var(--text-white-2);
+        }
+
+        .side-gray>.sidename:hover {
+            background-color: var(--shadow-4);
+        }
+
+        .side-others>.sidename::after {
+            top: 25%;
+            right: -10px;
+            border-radius: 10px;
+            position: absolute;
+            content: "";
+            width: 5px;
+            height: 50%;
+            font-size: 12px;
+            background-color: #3795ec;
+            opacity: 0;
+            transition: 0.4s var(--default-bezier-start);
+        }
+
+        .side-others>.sidename:hover::after {
+            opacity: 1;
+        }
+
+        .share {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .share>div:first-child {
+            line-height: 150px;
+            font-weight: bold;
+            font-size: 128px;
+        }
+
+        .share>div:first-child>div {
+            filter: blur(10px);
+            opacity: 0;
+            letter-spacing: 128px;
+            animation: 1.2s share cubic-bezier(.38, 0, 0, 1) forwards;
+            animation-delay: 1s;
+        }
+
+        .share>div:first-child>div>span {
+            background-image: linear-gradient(45deg, #117de2, #98d6e6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @keyframes share {
+            to {
+                filter: blur(0);
+                opacity: 1;
+                letter-spacing: normal;
+            }
+        }
+
+        .share>div:nth-child(2) {
+            font-size: 24px;
+            color: var(--box-black-2);
+        }
+
+        /* Except this,it was written by CodingStartup. */
+
+        .title-text-animation {
+            position: relative;
+            top: 2rem;
+            opacity: 0;
+            filter: blur(5px);
+            animation: 0.6s swift-up cubic-bezier(.5, 0, 0, 1) forwards, 0.6s fade-in cubic-bezier(.5, 0, 0, 1) forwards;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes fade-in {
+            to {
+                opacity: 1;
+                filter: blur(0px);
+            }
+        }
+
+        .title-animation {
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+            top: .8rem;
+            animation: 0.7s swift-up cubic-bezier(.5, 0, 0, 1) forwards;
+        }
+
+        .title-animation-text {
+            font-style: normal;
+            position: relative;
+            top: 3.5rem;
+            opacity: 0;
+            filter: blur(10px);
+            animation: 0.6s swift-up cubic-bezier(.5, 0, 0, 1) forwards;
+        }
+
+        @keyframes swift-up {
+            to {
+                top: 0rem;
+                opacity: 1;
+                filter: blur(0px);
+            }
+        }
+
+        span:nth-of-type(1) i {
+            animation-delay: 0s;
+        }
+
+        span:nth-of-type(2) i {
+            animation-delay: .1s;
+        }
+
+        span:nth-of-type(3) i {
+            animation-delay: .2s;
+        }
+
+        span:nth-of-type(4) i {
+            animation-delay: .3s;
+        }
+
+        span:nth-of-type(5) i {
+            animation-delay: .4s;
+        }
+
+        span:nth-of-type(6) i {
+            animation-delay: .5s;
+        }
+
+        span:nth-of-type(1) {
+            animation-delay: 0s;
+        }
+
+        span:nth-of-type(2) {
+            animation-delay: .1s;
+        }
+
+        span:nth-of-type(3) {
+            animation-delay: .2s;
+        }
+
+        span:nth-of-type(4) {
+            animation-delay: .3s;
+        }
+
+        span:nth-of-type(5) {
+            animation-delay: .4s;
+        }
+
+        span:nth-of-type(6) {
+            animation-delay: .5s;
+        }
+
+        .hvh {
+            position: absolute;
+            height: 100vh;
+        }
+
+        /* iThink的统一调用库 */
+        :root {
+            --default-color: rgba(233, 193, 147, 0.25);
+
+            --text-white: rgb(255, 255, 255);
+            --text-white-1: rgba(255, 255, 255, 0.75);
+            --text-white-2: rgba(255, 255, 255, 0.50);
+            --text-white-3: rgba(255, 255, 255, 0.25);
+            --text-black: rgb(0, 0, 0);
+            --text-black-1: rgba(0, 0, 0, 0.80);
+            --text-black-2: rgba(0, 0, 0, 0.50);
+            --text-black-3: rgba(0, 0, 0, 0.25);
+
+            --box-white: rgba(255, 255, 255, 1);
+            --box-white-1: rgba(255, 255, 255, 0.75);
+            --box-white-2: rgba(255, 255, 255, 0.50);
+            --box-white-3: rgba(255, 255, 255, 0.30);
+            --box-white-4: rgba(255, 255, 255, 0.25);
+            --box-white-5: rgba(255, 255, 255, 0.15);
+            --box-white-6: rgba(255, 255, 255, 0.10);
+            --box-black: rgba(0, 0, 0, 1);
+            --box-black-1: rgba(0, 0, 0, 0.75);
+            --box-black-2: rgba(0, 0, 0, 0.50);
+            --box-black-3: rgba(0, 0, 0, 0.25);
+            --box-black-4: rgba(0, 0, 0, 0.15);
+            --box-black-5: rgba(0, 0, 0, 0.10);
+
+            --shadow-1: rgba(0, 0, 0, 0.25);
+            --shadow-2: rgba(0, 0, 0, 0.20);
+            --shadow-3: rgba(0, 0, 0, 0.15);
+            --shadow-4: rgba(0, 0, 0, 0.10);
+            --shadow-5: rgba(0, 0, 0, 0.05);
+
+            /* 祖传动画曲线 */
+            --default-bezier-color: cubic-bezier(.6, 0, .5, 1);
+            --default-bezier-start: cubic-bezier(.5, 0, .25, 1);
+            --default-bezier-end: cubic-bezier(.5, 0, .5, 1);
+            --default-bezier-nav-start: cubic-bezier(.25, .1, 0, 1);
+            --default-bezier-nav-end: cubic-bezier(.5, .25, .4, 1);
+            --default-bezier-ios-start: cubic-bezier(.25, 1, .25, 1);
+            --default-bezier-ios-end: cubic-bezier(.48, 1.23, .25, 1);
+            --default-bezier-apple-nav: cubic-bezier(0.28, 0.11, 0.32, 1);
+        }
+    </style>
+    <style>
+        .box {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: rgb(32, 221, 117);
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box-r {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: 5s box-r cubic-bezier(.5, 0, .5, 1) infinite;
+        }
+
+        @keyframes box-r {
+            50% {
+                transform: scale(90%);
+            }
+        }
+
+        .box-s {
+            z-index: -1;
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 100%;
+            background-color: rgba(32, 221, 117, 0.25);
+            animation: 2s box cubic-bezier(.53, .15, .83, .43) infinite;
+        }
+
+        .box-s:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .box-s:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .box-s:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes box {
+            to {
+                transform: scale(150%);
+                opacity: 0;
+                filter: blur(5px);
+            }
+        }
+
+        .box1 {
+            position: relative;
+            width: 500px;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box1-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url(https://source.unsplash.com/2560x1440/?encryption,natural);
+            filter: saturate(0)brightness(110%);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .box1-b {
+            top: -75px;
+            left: -75px;
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 100%;
+            background-color: dodgerblue;
+            filter: blur(5px);
+            transform: scale(150%);
+            opacity: 0;
+            animation: 1s box1 cubic-bezier(.17, .43, .34, 1) forwards;
+        }
+
+        @keyframes box1 {
+            to {
+                filter: blur(0px);
+                transform: scale(100%);
+                opacity: 1;
+            }
+        }
+
+        .box1-txt {
+            top: 10px;
+            left: 15px;
+            position: absolute;
+            font-size: 45px;
+            font-weight: 900;
+            line-height: 45px;
+            transform: translateX(20px);
+            opacity: 0;
+            filter: blur(5px);
+            animation: 1.1s box1-txt cubic-bezier(.17, .43, .34, 1) forwards;
+        }
+
+        @keyframes box1-txt {
+            to {
+                filter: blur(0px);
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .box2 {
+            position: absolute;
+            background-image: linear-gradient(-45deg, black, white);
+            filter: blur(20px);
+            width: 200px;
+            height: 200px;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: scale(0%);
+            opacity: 0;
+            animation: 2s box2 cubic-bezier(.49, .3, .57, .85) infinite;
+        }
+
+        .box2::before {
+            position: absolute;
+            z-index: 1;
+            content: "";
+            background-image: linear-gradient(-45deg, white, black);
+            width: 180px;
+            height: 180px;
+            border-radius: 100%;
+        }
+
+        .box2::after {
+            position: absolute;
+            z-index: 2;
+            content: "";
+            background-color: gray;
+            width: 160px;
+            height: 160px;
+            border-radius: 100%;
+        }
+
+        @keyframes box2 {
+            5% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(150%);
+                opacity: 0;
+                filter: blur(10px);
+            }
+        }
+
+        .box2:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .box2:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .box2:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+        .box3 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-image: linear-gradient(to bottom right, rgb(64, 213, 240), rgb(32, 152, 221));
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .box3::before {
+            position: absolute;
+            content: "";
+            filter: blur(20px);
+            width: 200px;
+            height: 200px;
+            border-radius: 100%;
+            border: 20px solid rgba(255, 255, 255, 1);
+            transform: scale(150%);
+            box-sizing: border-box;
+        }
+
+        .box3-r {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: 5s box3-r cubic-bezier(.5, 0, .5, 1) infinite;
+        }
+
+        @keyframes box3-r {
+            50% {
+                transform: scale(90%);
+            }
+        }
+
+        .box3-s {
+            z-index: -1;
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 100%;
+            background-image: linear-gradient(to bottom right, rgb(64, 213, 240), rgb(32, 152, 221));
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: 2s box3 cubic-bezier(.41, .62, .57, .44) infinite;
+        }
+
+        .box3-s::before {
+            position: absolute;
+            content: "";
+            background-image: radial-gradient(rgba(255, 255, 255, 1)10%, rgba(255, 255, 255, 0));
+            border-radius: 100%;
+            width: 190px;
+            height: 190px;
+        }
+
+        .box3-s:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .box3-s:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .box3-s:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes box3 {
+            0% {
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            75% {
+                filter: blur(0px);
+            }
+
+            100% {
+                transform: scale(300%);
+                opacity: 0;
+                filter: blur(5px);
+            }
+        }
+
+        .box4 {
+            text-align: center;
+            filter: blur(10px);
+            opacity: 0;
+            font-size: 64px;
+            letter-spacing: 64px;
+            white-space: nowrap;
+            animation: 2s box4 cubic-bezier(.79, 0, 0, 1) forwards;
+        }
+
+        @keyframes box4 {
+            to {
+                filter: blur(0);
+                opacity: 1;
+                letter-spacing: normal;
+            }
+        }
+
+        .box5 {
+            z-index: 1;
+            width: 500px;
+            height: 200px;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center;
+            background-image: url(https://source.unsplash.com/2560x1440/);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box5-blur {
+            position: absolute;
+            filter: blur(10px)brightness(75%);
+            transform: translateY(7px)scale(95%);
+            width: 500px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-image: url(https://source.unsplash.com/2560x1440/);
+        }
+
+        .box5-blur::before {
+            position: absolute;
+            content: "";
+            filter: blur(10px);
+            transform: translateY(0px)scale(100%);
+            width: 500px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-image: url(https://source.unsplash.com/2560x1440/);
+        }
+
+        .box6 {
+            border-radius: 10px;
+            background-color: var(--box-white-4);
+            width: 600px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 64px;
+            font-weight: bold;
+            color: var(--text-white-1);
+            text-shadow: 0 0 20px var(--box-black-5);
+        }
+
+        .box7-bg {
+            width: 400px;
+            height: 400px;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center;
+            background-image: url(https://source.unsplash.com/2560x1440/);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box7 {
+            -webkit-backdrop-filter: blur(20px)saturate(180%);
+            backdrop-filter: blur(20px)saturate(180%);
+            width: 300px;
+            height: 50px;
+            border-radius: 100px;
+        }
+
+        .box7-black {
+            background-color: rgba(0, 0, 0, 0.25);
+            width: 300px;
+            height: 50px;
+            border-radius: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box7-black-o {
+            position: relative;
+            width: 260px;
+            height: 10px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .box7-black-o>div {
+            position: absolute;
+            filter: blur(20px)saturate(180%);
+        }
+
+        .box7-line {
+            position: absolute;
+            width: 260px;
+            height: 10px;
+        }
+
+        .box7-line::after {
+            content: "";
+            width: 10px;
+            height: 10px;
+            display: flex;
+            border-radius: 100px;
+            background-color: var(--box-white-4);
+            animation: 2s box7 cubic-bezier(.5,0,.25,1) infinite;
+        }
+
+        @keyframes box7 {
+            50% {
+                width: 260px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outside">
+        <div class="share">
+            <div>
+                <span class="title-animation"><i class="title-animation-text">Let</i></span>
+                <span class="title-animation"><i class="title-animation-text">us</i></span>
+                <span class="title-animation"><i class="title-animation-text">share</i></span>
+                <span class="title-animation"><i class="title-animation-text">some</i></span>
+                <span class="title-animation"><i class="title-animation-text">codes</i></span>
+                <span class="title-animation"><i class="title-animation-text">,</i></span>
+                <div><span>iThink!</span></div>
+            </div>
+            <div class="title-text-animation">Some interesting style.</div>
+        </div>
+        <div class="side">
+            <div class="sidename">Pure Music</div>
+            <div class="box-r">
+                <div class="box">
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50"
+                        height="50" viewBox="0 0 24 24" version="1.1">
+                        <title>Public/ic_public_music_public_filled</title>
+                        <defs>
+                            <path
+                                d="M20.4655632,3.98094804 C20.4803936,4.07517784 20.4903061,4.17008347 20.4952705,4.26527934 L20.4990023,4.40824262 L20.5,15.249908 L20.498902,15.2620554 L20.498902,15.2620554 C20.4931586,16.2880671 20.4856874,16.7633475 20.2674612,17.5724186 C20.049235,18.3814897 19.6218054,19.1432745 18.7702139,19.6340818 C17.2204638,20.5272666 15.3424257,20.1763717 14.5754983,18.8503361 C13.8085709,17.5243005 14.4431741,15.7252669 15.9929242,14.8320821 C16.6295315,14.465179 17.4389386,14.1407327 17.998814,13.6282537 C18.334865,13.3206511 18.498814,12.8782537 18.498814,11.8782537 L18.499186,11.8570969 L18.498186,6.76409685 L8.49918603,8.52809685 L8.49936922,16.5464126 C8.49972336,16.5891392 8.5000223,16.6319679 8.50026898,16.6748653 L8.50102054,17.1481598 L8.50008805,17.3838017 C8.49434461,18.4098134 8.48687341,18.8850938 8.26864723,19.6941649 C8.05042106,20.503236 7.62299148,21.2650208 6.77139997,21.7558281 C5.22164988,22.6490129 3.34361172,22.2981181 2.57668432,20.9720825 C1.80975692,19.6460469 2.4443601,17.8470132 3.99411018,16.9538284 C4.63071753,16.5869253 5.44012462,16.2624791 6,15.75 C6.33605107,15.4423974 6.5,15 6.5,14 L6.5,5.74611652 C6.5,4.45125417 7.4013868,3.34060819 8.6500759,3.06228843 L8.82245235,3.02955564 L17.3214547,1.69193481 C18.8217698,1.45580676 20.2294352,2.4806329 20.4655632,3.98094804 Z"
+                                id="__path-1" />
+                        </defs>
+                        <g id="__Public/ic_public_music_public_filled" stroke="none" stroke-width="1" fill="none"
+                            fill-rule="evenodd">
+                            <mask id="__mask-2" fill="white">
+                                <use xlink:href="#__path-1" />
+                            </mask>
+                            <use id="__形状结合" fill="#ffffff" xlink:href="#__path-1" />
+                        </g>
+                    </svg>
+                </div>
+                <div class="box-s"></div>
+                <div class="box-s"></div>
+                <div class="box-s"></div>
+                <div class="box-s"></div>
+            </div>
+        </div>
+        <div class="side">
+            <div class="sidename">Card</div>
+            <div class="box1">
+                <div class="box1-img" id="box1-img"></div>
+                <div class="box1-b"></div>
+                <div class="box1-txt">For<br>You</div>
+                <div>Refresh loading animation.</div>
+            </div>
+        </div>
+        <div class="side side-gray">
+            <div class="sidename">Ripple</div>
+            <div class="box2"></div>
+            <div class="box2"></div>
+            <div class="box2"></div>
+            <div class="box2"></div>
+        </div>
+        <div class="side">
+            <div class="sidename">Loud Music</div>
+            <div class="box3-r">
+                <div class="box3">
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50"
+                        height="50" viewBox="0 0 24 24" version="1.1">
+                        <title>Public/ic_public_music_public_filled</title>
+                        <defs>
+                            <path
+                                d="M20.4655632,3.98094804 C20.4803936,4.07517784 20.4903061,4.17008347 20.4952705,4.26527934 L20.4990023,4.40824262 L20.5,15.249908 L20.498902,15.2620554 L20.498902,15.2620554 C20.4931586,16.2880671 20.4856874,16.7633475 20.2674612,17.5724186 C20.049235,18.3814897 19.6218054,19.1432745 18.7702139,19.6340818 C17.2204638,20.5272666 15.3424257,20.1763717 14.5754983,18.8503361 C13.8085709,17.5243005 14.4431741,15.7252669 15.9929242,14.8320821 C16.6295315,14.465179 17.4389386,14.1407327 17.998814,13.6282537 C18.334865,13.3206511 18.498814,12.8782537 18.498814,11.8782537 L18.499186,11.8570969 L18.498186,6.76409685 L8.49918603,8.52809685 L8.49936922,16.5464126 C8.49972336,16.5891392 8.5000223,16.6319679 8.50026898,16.6748653 L8.50102054,17.1481598 L8.50008805,17.3838017 C8.49434461,18.4098134 8.48687341,18.8850938 8.26864723,19.6941649 C8.05042106,20.503236 7.62299148,21.2650208 6.77139997,21.7558281 C5.22164988,22.6490129 3.34361172,22.2981181 2.57668432,20.9720825 C1.80975692,19.6460469 2.4443601,17.8470132 3.99411018,16.9538284 C4.63071753,16.5869253 5.44012462,16.2624791 6,15.75 C6.33605107,15.4423974 6.5,15 6.5,14 L6.5,5.74611652 C6.5,4.45125417 7.4013868,3.34060819 8.6500759,3.06228843 L8.82245235,3.02955564 L17.3214547,1.69193481 C18.8217698,1.45580676 20.2294352,2.4806329 20.4655632,3.98094804 Z"
+                                id="__path-1" />
+                        </defs>
+                        <g id="__Public/ic_public_music_public_filled" stroke="none" stroke-width="1" fill="none"
+                            fill-rule="evenodd">
+                            <mask id="__mask-2" fill="white">
+                                <use xlink:href="#__path-1" />
+                            </mask>
+                            <use id="__形状结合" fill="#ffffff" xlink:href="#__path-1" />
+                        </g>
+                    </svg>
+                </div>
+                <div class="box3-s"></div>
+                <div class="box3-s"></div>
+                <div class="box3-s"></div>
+                <div class="box3-s"></div>
+            </div>
+        </div>
+        <div class="side">
+            <div class="sidename">Interesting Text Animation</div>
+            <div class="box4 font-serif">Mariah Carey</div>
+            <div>Refresh loading animation.</div>
+        </div>
+        <div class="side">
+            <div class="sidename">Pseudo Shadow</div>
+            <div class="box5"></div>
+            <div class="box5-blur"></div>
+        </div>
+        <div class="side side-gray side-others">
+            <div class="sidename">3D Tilt</div>
+            <div class="box6">vanilla-tilt.js</div>
+            <script>
+                var VanillaTilt = (function () {
+                    'use strict';
+
+                    var classCallCheck = function (instance, Constructor) {
+                        if (!(instance instanceof Constructor)) {
+                            throw new TypeError("Cannot call a class as a function");
+                        }
+                    };
+
+                    /**
+                     * Created by Sergiu Șandor (micku7zu) on 1/27/2017.
+                     * Original idea: https://github.com/gijsroge/tilt.js
+                     * MIT License.
+                     * Version 1.8.0
+                     */
+
+                    var VanillaTilt = function () {
+                        function VanillaTilt(element) {
+                            var settings = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+                            classCallCheck(this, VanillaTilt);
+
+                            if (!(element instanceof Node)) {
+                                throw "Can't initialize VanillaTilt because " + element + " is not a Node.";
+                            }
+
+                            this.width = null;
+                            this.height = null;
+                            this.clientWidth = null;
+                            this.clientHeight = null;
+                            this.left = null;
+                            this.top = null;
+
+                            // for Gyroscope sampling
+                            this.gammazero = null;
+                            this.betazero = null;
+                            this.lastgammazero = null;
+                            this.lastbetazero = null;
+
+                            this.transitionTimeout = null;
+                            this.updateCall = null;
+                            this.event = null;
+
+                            this.updateBind = this.update.bind(this);
+                            this.resetBind = this.reset.bind(this);
+
+                            this.element = element;
+                            this.settings = this.extendSettings(settings);
+
+                            this.reverse = this.settings.reverse ? -1 : 1;
+                            this.resetToStart = VanillaTilt.isSettingTrue(this.settings["reset-to-start"]);
+                            this.glare = VanillaTilt.isSettingTrue(this.settings.glare);
+                            this.glarePrerender = VanillaTilt.isSettingTrue(this.settings["glare-prerender"]);
+                            this.fullPageListening = VanillaTilt.isSettingTrue(this.settings["full-page-listening"]);
+                            this.gyroscope = VanillaTilt.isSettingTrue(this.settings.gyroscope);
+                            this.gyroscopeSamples = this.settings.gyroscopeSamples;
+
+                            this.elementListener = this.getElementListener();
+
+                            if (this.glare) {
+                                this.prepareGlare();
+                            }
+
+                            if (this.fullPageListening) {
+                                this.updateClientSize();
+                            }
+
+                            this.addEventListeners();
+                            this.reset();
+
+                            if (this.resetToStart === false) {
+                                this.settings.startX = 0;
+                                this.settings.startY = 0;
+                            }
+                        }
+
+                        VanillaTilt.isSettingTrue = function isSettingTrue(setting) {
+                            return setting === "" || setting === true || setting === 1;
+                        };
+
+                        /**
+                         * Method returns element what will be listen mouse events
+                         * @return {Node}
+                         */
+
+
+                        VanillaTilt.prototype.getElementListener = function getElementListener() {
+                            if (this.fullPageListening) {
+                                return window.document;
+                            }
+
+                            if (typeof this.settings["mouse-event-element"] === "string") {
+                                var mouseEventElement = document.querySelector(this.settings["mouse-event-element"]);
+
+                                if (mouseEventElement) {
+                                    return mouseEventElement;
+                                }
+                            }
+
+                            if (this.settings["mouse-event-element"] instanceof Node) {
+                                return this.settings["mouse-event-element"];
+                            }
+
+                            return this.element;
+                        };
+
+                        /**
+                         * Method set listen methods for this.elementListener
+                         * @return {Node}
+                         */
+
+
+                        VanillaTilt.prototype.addEventListeners = function addEventListeners() {
+                            this.onMouseEnterBind = this.onMouseEnter.bind(this);
+                            this.onMouseMoveBind = this.onMouseMove.bind(this);
+                            this.onMouseLeaveBind = this.onMouseLeave.bind(this);
+                            this.onWindowResizeBind = this.onWindowResize.bind(this);
+                            this.onDeviceOrientationBind = this.onDeviceOrientation.bind(this);
+
+                            this.elementListener.addEventListener("mouseenter", this.onMouseEnterBind);
+                            this.elementListener.addEventListener("mouseleave", this.onMouseLeaveBind);
+                            this.elementListener.addEventListener("mousemove", this.onMouseMoveBind);
+
+                            if (this.glare || this.fullPageListening) {
+                                window.addEventListener("resize", this.onWindowResizeBind);
+                            }
+
+                            if (this.gyroscope) {
+                                window.addEventListener("deviceorientation", this.onDeviceOrientationBind);
+                            }
+                        };
+
+                        /**
+                         * Method remove event listeners from current this.elementListener
+                         */
+
+
+                        VanillaTilt.prototype.removeEventListeners = function removeEventListeners() {
+                            this.elementListener.removeEventListener("mouseenter", this.onMouseEnterBind);
+                            this.elementListener.removeEventListener("mouseleave", this.onMouseLeaveBind);
+                            this.elementListener.removeEventListener("mousemove", this.onMouseMoveBind);
+
+                            if (this.gyroscope) {
+                                window.removeEventListener("deviceorientation", this.onDeviceOrientationBind);
+                            }
+
+                            if (this.glare || this.fullPageListening) {
+                                window.removeEventListener("resize", this.onWindowResizeBind);
+                            }
+                        };
+
+                        VanillaTilt.prototype.destroy = function destroy() {
+                            clearTimeout(this.transitionTimeout);
+                            if (this.updateCall !== null) {
+                                cancelAnimationFrame(this.updateCall);
+                            }
+
+                            this.reset();
+
+                            this.removeEventListeners();
+                            this.element.vanillaTilt = null;
+                            delete this.element.vanillaTilt;
+
+                            this.element = null;
+                        };
+
+                        VanillaTilt.prototype.onDeviceOrientation = function onDeviceOrientation(event) {
+                            if (event.gamma === null || event.beta === null) {
+                                return;
+                            }
+
+                            this.updateElementPosition();
+
+                            if (this.gyroscopeSamples > 0) {
+                                this.lastgammazero = this.gammazero;
+                                this.lastbetazero = this.betazero;
+
+                                if (this.gammazero === null) {
+                                    this.gammazero = event.gamma;
+                                    this.betazero = event.beta;
+                                } else {
+                                    this.gammazero = (event.gamma + this.lastgammazero) / 2;
+                                    this.betazero = (event.beta + this.lastbetazero) / 2;
+                                }
+
+                                this.gyroscopeSamples -= 1;
+                            }
+
+                            var totalAngleX = this.settings.gyroscopeMaxAngleX - this.settings.gyroscopeMinAngleX;
+                            var totalAngleY = this.settings.gyroscopeMaxAngleY - this.settings.gyroscopeMinAngleY;
+
+                            var degreesPerPixelX = totalAngleX / this.width;
+                            var degreesPerPixelY = totalAngleY / this.height;
+
+                            var angleX = event.gamma - (this.settings.gyroscopeMinAngleX + this.gammazero);
+                            var angleY = event.beta - (this.settings.gyroscopeMinAngleY + this.betazero);
+
+                            var posX = angleX / degreesPerPixelX;
+                            var posY = angleY / degreesPerPixelY;
+
+                            if (this.updateCall !== null) {
+                                cancelAnimationFrame(this.updateCall);
+                            }
+
+                            this.event = {
+                                clientX: posX + this.left,
+                                clientY: posY + this.top
+                            };
+
+                            this.updateCall = requestAnimationFrame(this.updateBind);
+                        };
+
+                        VanillaTilt.prototype.onMouseEnter = function onMouseEnter() {
+                            this.updateElementPosition();
+                            this.element.style.willChange = "transform";
+                            this.setTransition();
+                        };
+
+                        VanillaTilt.prototype.onMouseMove = function onMouseMove(event) {
+                            if (this.updateCall !== null) {
+                                cancelAnimationFrame(this.updateCall);
+                            }
+
+                            this.event = event;
+                            this.updateCall = requestAnimationFrame(this.updateBind);
+                        };
+
+                        VanillaTilt.prototype.onMouseLeave = function onMouseLeave() {
+                            this.setTransition();
+
+                            if (this.settings.reset) {
+                                requestAnimationFrame(this.resetBind);
+                            }
+                        };
+
+                        VanillaTilt.prototype.reset = function reset() {
+                            this.onMouseEnter();
+
+                            if (this.fullPageListening) {
+                                this.event = {
+                                    clientX: (this.settings.startX + this.settings.max) / (2 * this.settings.max) * this.clientWidth,
+                                    clientY: (this.settings.startY + this.settings.max) / (2 * this.settings.max) * this.clientHeight
+                                };
+                            } else {
+                                this.event = {
+                                    clientX: this.left + (this.settings.startX + this.settings.max) / (2 * this.settings.max) * this.width,
+                                    clientY: this.top + (this.settings.startY + this.settings.max) / (2 * this.settings.max) * this.height
+                                };
+                            }
+
+                            var backupScale = this.settings.scale;
+                            this.settings.scale = 1;
+                            this.update();
+                            this.settings.scale = backupScale;
+                            this.resetGlare();
+                        };
+
+                        VanillaTilt.prototype.resetGlare = function resetGlare() {
+                            if (this.glare) {
+                                this.glareElement.style.transform = "rotate(180deg) translate(-50%, -50%)";
+                                this.glareElement.style.opacity = "0";
+                            }
+                        };
+
+                        VanillaTilt.prototype.getValues = function getValues() {
+                            var x = void 0,
+                                y = void 0;
+
+                            if (this.fullPageListening) {
+                                x = this.event.clientX / this.clientWidth;
+                                y = this.event.clientY / this.clientHeight;
+                            } else {
+                                x = (this.event.clientX - this.left) / this.width;
+                                y = (this.event.clientY - this.top) / this.height;
+                            }
+
+                            x = Math.min(Math.max(x, 0), 1);
+                            y = Math.min(Math.max(y, 0), 1);
+
+                            var tiltX = (this.reverse * (this.settings.max - x * this.settings.max * 2)).toFixed(2);
+                            var tiltY = (this.reverse * (y * this.settings.max * 2 - this.settings.max)).toFixed(2);
+                            var angle = Math.atan2(this.event.clientX - (this.left + this.width / 2), -(this.event.clientY - (this.top + this.height / 2))) * (180 / Math.PI);
+
+                            return {
+                                tiltX: tiltX,
+                                tiltY: tiltY,
+                                percentageX: x * 100,
+                                percentageY: y * 100,
+                                angle: angle
+                            };
+                        };
+
+                        VanillaTilt.prototype.updateElementPosition = function updateElementPosition() {
+                            var rect = this.element.getBoundingClientRect();
+
+                            this.width = this.element.offsetWidth;
+                            this.height = this.element.offsetHeight;
+                            this.left = rect.left;
+                            this.top = rect.top;
+                        };
+
+                        VanillaTilt.prototype.update = function update() {
+                            var values = this.getValues();
+
+                            this.element.style.transform = "perspective(" + this.settings.perspective + "px) " + "rotateX(" + (this.settings.axis === "x" ? 0 : values.tiltY) + "deg) " + "rotateY(" + (this.settings.axis === "y" ? 0 : values.tiltX) + "deg) " + "scale3d(" + this.settings.scale + ", " + this.settings.scale + ", " + this.settings.scale + ")";
+
+                            if (this.glare) {
+                                this.glareElement.style.transform = "rotate(" + values.angle + "deg) translate(-50%, -50%)";
+                                this.glareElement.style.opacity = "" + values.percentageY * this.settings["max-glare"] / 100;
+                            }
+
+                            this.element.dispatchEvent(new CustomEvent("tiltChange", {
+                                "detail": values
+                            }));
+
+                            this.updateCall = null;
+                        };
+
+                        /**
+                         * Appends the glare element (if glarePrerender equals false)
+                         * and sets the default style
+                         */
+
+
+                        VanillaTilt.prototype.prepareGlare = function prepareGlare() {
+                            // If option pre-render is enabled we assume all html/css is present for an optimal glare effect.
+                            if (!this.glarePrerender) {
+                                // Create glare element
+                                var jsTiltGlare = document.createElement("div");
+                                jsTiltGlare.classList.add("js-tilt-glare");
+
+                                var jsTiltGlareInner = document.createElement("div");
+                                jsTiltGlareInner.classList.add("js-tilt-glare-inner");
+
+                                jsTiltGlare.appendChild(jsTiltGlareInner);
+                                this.element.appendChild(jsTiltGlare);
+                            }
+
+                            this.glareElementWrapper = this.element.querySelector(".js-tilt-glare");
+                            this.glareElement = this.element.querySelector(".js-tilt-glare-inner");
+
+                            if (this.glarePrerender) {
+                                return;
+                            }
+
+                            Object.assign(this.glareElementWrapper.style, {
+                                "position": "absolute",
+                                "top": "0",
+                                "left": "0",
+                                "width": "100%",
+                                "height": "100%",
+                                "overflow": "hidden",
+                                "pointer-events": "none",
+                                "border-radius": "inherit"
+                            });
+
+                            Object.assign(this.glareElement.style, {
+                                "position": "absolute",
+                                "top": "50%",
+                                "left": "50%",
+                                "pointer-events": "none",
+                                "background-image": "linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%)",
+                                "transform": "rotate(180deg) translate(-50%, -50%)",
+                                "transform-origin": "0% 0%",
+                                "opacity": "0"
+                            });
+
+                            this.updateGlareSize();
+                        };
+
+                        VanillaTilt.prototype.updateGlareSize = function updateGlareSize() {
+                            if (this.glare) {
+                                var glareSize = (this.element.offsetWidth > this.element.offsetHeight ? this.element.offsetWidth : this.element.offsetHeight) * 2;
+
+                                Object.assign(this.glareElement.style, {
+                                    "width": glareSize + "px",
+                                    "height": glareSize + "px"
+                                });
+                            }
+                        };
+
+                        VanillaTilt.prototype.updateClientSize = function updateClientSize() {
+                            this.clientWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+                            this.clientHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+                        };
+
+                        VanillaTilt.prototype.onWindowResize = function onWindowResize() {
+                            this.updateGlareSize();
+                            this.updateClientSize();
+                        };
+
+                        VanillaTilt.prototype.setTransition = function setTransition() {
+                            var _this = this;
+
+                            clearTimeout(this.transitionTimeout);
+                            this.element.style.transition = this.settings.speed + "ms " + this.settings.easing;
+                            if (this.glare) this.glareElement.style.transition = "opacity " + this.settings.speed + "ms " + this.settings.easing;
+
+                            this.transitionTimeout = setTimeout(function () {
+                                _this.element.style.transition = "";
+                                if (_this.glare) {
+                                    _this.glareElement.style.transition = "";
+                                }
+                            }, this.settings.speed);
+                        };
+
+                        /**
+                         * Method return patched settings of instance
+                         * @param {boolean} settings.reverse - reverse the tilt direction
+                         * @param {number} settings.max - max tilt rotation (degrees)
+                         * @param {startX} settings.startX - the starting tilt on the X axis, in degrees. Default: 0
+                         * @param {startY} settings.startY - the starting tilt on the Y axis, in degrees. Default: 0
+                         * @param {number} settings.perspective - Transform perspective, the lower the more extreme the tilt gets
+                         * @param {string} settings.easing - Easing on enter/exit
+                         * @param {number} settings.scale - 2 = 200%, 1.5 = 150%, etc..
+                         * @param {number} settings.speed - Speed of the enter/exit transition
+                         * @param {boolean} settings.transition - Set a transition on enter/exit
+                         * @param {string|null} settings.axis - What axis should be enabled. Can be "x" or "y"
+                         * @param {boolean} settings.glare - if it should have a "glare" effect
+                         * @param {number} settings.max-glare - the maximum "glare" opacity (1 = 100%, 0.5 = 50%)
+                         * @param {boolean} settings.glare-prerender - false = VanillaTilt creates the glare elements for you, otherwise
+                         * @param {boolean} settings.full-page-listening - If true, parallax effect will listen to mouse move events on the whole document, not only the selected element
+                         * @param {string|object} settings.mouse-event-element - String selector or link to HTML-element what will be listen mouse events
+                         * @param {boolean} settings.reset - false = If the tilt effect has to be reset on exit
+                         * @param {boolean} settings.reset-to-start - true = On reset event (mouse leave) will return to initial start angle (if startX or startY is set)
+                         * @param {gyroscope} settings.gyroscope - Enable tilting by deviceorientation events
+                         * @param {gyroscopeSensitivity} settings.gyroscopeSensitivity - Between 0 and 1 - The angle at which max tilt position is reached. 1 = 90deg, 0.5 = 45deg, etc..
+                         * @param {gyroscopeSamples} settings.gyroscopeSamples - How many gyroscope moves to decide the starting position.
+                         */
+
+
+                        VanillaTilt.prototype.extendSettings = function extendSettings(settings) {
+                            var defaultSettings = {
+                                reverse: false,
+                                max: 15,
+                                startX: 0,
+                                startY: 0,
+                                perspective: 1000,
+                                easing: "cubic-bezier(.03,.98,.52,.99)",
+                                scale: 1,
+                                speed: 300,
+                                transition: true,
+                                axis: null,
+                                glare: false,
+                                "max-glare": 1,
+                                "glare-prerender": false,
+                                "full-page-listening": false,
+                                "mouse-event-element": null,
+                                reset: true,
+                                "reset-to-start": true,
+                                gyroscope: true,
+                                gyroscopeMinAngleX: -45,
+                                gyroscopeMaxAngleX: 45,
+                                gyroscopeMinAngleY: -45,
+                                gyroscopeMaxAngleY: 45,
+                                gyroscopeSamples: 10
+                            };
+
+                            var newSettings = {};
+                            for (var property in defaultSettings) {
+                                if (property in settings) {
+                                    newSettings[property] = settings[property];
+                                } else if (this.element.hasAttribute("data-tilt-" + property)) {
+                                    var attribute = this.element.getAttribute("data-tilt-" + property);
+                                    try {
+                                        newSettings[property] = JSON.parse(attribute);
+                                    } catch (e) {
+                                        newSettings[property] = attribute;
+                                    }
+                                } else {
+                                    newSettings[property] = defaultSettings[property];
+                                }
+                            }
+
+                            return newSettings;
+                        };
+
+                        VanillaTilt.init = function init(elements, settings) {
+                            if (elements instanceof Node) {
+                                elements = [elements];
+                            }
+
+                            if (elements instanceof NodeList) {
+                                elements = [].slice.call(elements);
+                            }
+
+                            if (!(elements instanceof Array)) {
+                                return;
+                            }
+
+                            elements.forEach(function (element) {
+                                if (!("vanillaTilt" in element)) {
+                                    element.vanillaTilt = new VanillaTilt(element, settings);
+                                }
+                            });
+                        };
+
+                        return VanillaTilt;
+                    }();
+
+                    if (typeof document !== "undefined") {
+                        /* expose the class to window */
+                        window.VanillaTilt = VanillaTilt;
+
+                        /**
+                         * Auto load
+                         */
+                        VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
+                    }
+
+                    return VanillaTilt;
+
+                }());
+            </script>
+            <script>
+                VanillaTilt.init(document.querySelectorAll(".box6"), {
+                    max: 15,
+                    speed: 500,
+                    glare: true,
+                })
+            </script>
+        </div>
+        <div class="side">
+            <div class="sidename">iOS Progress Bar</div>
+            <div class="box7-bg">
+                <div class="box7">
+                    <div class="box7-black">
+                        <div class="box7-black-o">
+                            <div class="box7-bg"></div>
+                        </div>
+                        <div class="box7-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hvh"></div>
+</body>
+
+<script>
+    var w = document.querySelector(".outside");
+    var nh = parseFloat(getComputedStyle(w).width);
+    var h = parseFloat(getComputedStyle(w).width) + 25 + "px";
+
+    var hvh = document.querySelector(".hvh");
+    var maxh = parseFloat(getComputedStyle(hvh).height) - 50 + "px";
+
+    console.log(maxh)
+
+    if (nh <= maxh) {
+        let arr = document.getElementsByClassName("side");
+        for (let i = 0, len = arr.length; i < len; i++) {
+            document.getElementsByClassName("side")[i].style.height = h;
+        }
+    } else {
+        let arr = document.getElementsByClassName("side");
+        for (let i = 0, len = arr.length; i < len; i++) {
+            document.getElementsByClassName("side")[i].style.height = maxh;
+        }
+    }
+
+</script>
+
+</html>
