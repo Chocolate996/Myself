@@ -1055,6 +1055,11 @@
             100% {
                 transform: rotate(360deg);
             }
+
+            /* 其实大可直接这样的
+            to {
+                transform: rotate(360deg);
+            } */
         }
 
         .box8-hand-js {
@@ -1906,7 +1911,7 @@
                         document.getElementsByClassName("box8-hb")[0].style.opacity = "1";
                         document.getElementsByClassName("box8-mb")[0].style.opacity = "1";
                         document.getElementsByClassName("box8-sb")[0].style.opacity = "1";
-                    document.documentElement.style.setProperty("--box8-b", "100%");
+                        document.documentElement.style.setProperty("--box8-b", "100%");
                     }
                 </script>
             </div>
