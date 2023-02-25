@@ -697,13 +697,455 @@
             display: flex;
             border-radius: 100px;
             background-color: var(--box-white-4);
-            animation: 2s box7 cubic-bezier(.5,0,.25,1) infinite;
+            animation: 2s box7 cubic-bezier(.5, 0, .25, 1) infinite;
         }
 
         @keyframes box7 {
             50% {
                 width: 260px;
             }
+        }
+
+        .box8 {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border-radius: 100%;
+            box-shadow: 0 20px 20px -10px var(--shadow-1), 0 5px 20px 0 var(--shadow-4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box8-line-box {
+            position: relative;
+            width: 480px;
+            height: 480px;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box8-line-long-out {
+            position: absolute;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .box8-line-long {
+            width: 4px;
+            height: 20px;
+            border-radius: 10px;
+            background-color: var(--box-black-5);
+        }
+
+        .box8-line-long-out:nth-child(2) {
+            transform: rotate(30deg);
+        }
+
+        .box8-line-long-out:nth-child(3) {
+            transform: rotate(60deg);
+        }
+
+        .box8-line-long-out:nth-child(4) {
+            transform: rotate(90deg);
+        }
+
+        .box8-line-long-out:nth-child(5) {
+            transform: rotate(120deg);
+        }
+
+        .box8-line-long-out:nth-child(6) {
+            transform: rotate(150deg);
+        }
+
+        .box8-hand {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box8-hand-t {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .box8-hand-t-h {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            animation: 216000s box8-hand-hm linear infinite;
+        }
+
+        .box8-hand-t-m {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            animation: 3600s box8-hand-hm linear infinite;
+        }
+
+        .box8-hand-t-s {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            animation: 60s box8-hand-s cubic-bezier(.03, 1.31, 0, .96) infinite;
+        }
+
+        @keyframes box8-hand-hm {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes box8-hand-s {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            1.666666666% {
+                transform: rotate(6deg);
+            }
+
+            3.333333333% {
+                transform: rotate(12deg);
+            }
+
+            5% {
+                transform: rotate(18deg);
+            }
+
+            6.666666666% {
+                transform: rotate(24deg);
+            }
+
+            8.333333333% {
+                transform: rotate(30deg);
+            }
+
+            10% {
+                transform: rotate(36deg);
+            }
+
+            11.666666666% {
+                transform: rotate(42deg);
+            }
+
+            13.333333333% {
+                transform: rotate(48deg);
+            }
+
+            15% {
+                transform: rotate(54deg);
+            }
+
+            16.666666666% {
+                transform: rotate(60deg);
+            }
+
+            18.333333333% {
+                transform: rotate(66deg);
+            }
+
+            20% {
+                transform: rotate(72deg);
+            }
+
+            21.666666666% {
+                transform: rotate(78deg);
+            }
+
+            23.333333333% {
+                transform: rotate(84deg);
+            }
+
+            25% {
+                transform: rotate(90deg);
+            }
+
+            26.666666666% {
+                transform: rotate(96deg);
+            }
+
+            28.333333333% {
+                transform: rotate(102deg);
+            }
+
+            30% {
+                transform: rotate(108deg);
+            }
+
+            31.666666666% {
+                transform: rotate(114deg);
+            }
+
+            33.333333333% {
+                transform: rotate(120deg);
+            }
+
+            35% {
+                transform: rotate(126deg);
+            }
+
+            36.666666666% {
+                transform: rotate(132deg);
+            }
+
+            38.333333333% {
+                transform: rotate(138deg);
+            }
+
+            40% {
+                transform: rotate(144deg);
+            }
+
+            41.666666666% {
+                transform: rotate(150deg);
+            }
+
+            43.333333333% {
+                transform: rotate(156deg);
+            }
+
+            45% {
+                transform: rotate(162deg);
+            }
+
+            46.666666666% {
+                transform: rotate(168deg);
+            }
+
+            48.333333333% {
+                transform: rotate(174deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+
+            51.666666666% {
+                transform: rotate(186deg);
+            }
+
+            53.333333333% {
+                transform: rotate(192deg);
+            }
+
+            55% {
+                transform: rotate(198deg);
+            }
+
+            56.666666666% {
+                transform: rotate(204deg);
+            }
+
+            58.333333333% {
+                transform: rotate(210deg);
+            }
+
+            60% {
+                transform: rotate(216deg);
+            }
+
+            61.666666666% {
+                transform: rotate(222deg);
+            }
+
+            63.333333333% {
+                transform: rotate(228deg);
+            }
+
+            65% {
+                transform: rotate(234deg);
+            }
+
+            66.666666666% {
+                transform: rotate(240deg);
+            }
+
+            68.333333333% {
+                transform: rotate(246deg);
+            }
+
+            70% {
+                transform: rotate(252deg);
+            }
+
+            71.666666666% {
+                transform: rotate(258deg);
+            }
+
+            73.333333333% {
+                transform: rotate(264deg);
+            }
+
+            75% {
+                transform: rotate(270deg);
+            }
+
+            76.666666666% {
+                transform: rotate(276deg);
+            }
+
+            78.333333333% {
+                transform: rotate(282deg);
+            }
+
+            80% {
+                transform: rotate(288deg);
+            }
+
+            81.666666666% {
+                transform: rotate(294deg);
+            }
+
+            83.333333333% {
+                transform: rotate(300deg);
+            }
+
+            85% {
+                transform: rotate(306deg);
+            }
+
+            86.666666666% {
+                transform: rotate(312deg);
+            }
+
+            88.333333333% {
+                transform: rotate(318deg);
+            }
+
+            90% {
+                transform: rotate(324deg);
+            }
+
+            91.666666666% {
+                transform: rotate(330deg);
+            }
+
+            93.333333333% {
+                transform: rotate(336deg);
+            }
+
+            95% {
+                transform: rotate(342deg);
+            }
+
+            96.666666666% {
+                transform: rotate(348deg);
+            }
+
+            98.333333333% {
+                transform: rotate(354deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .box8-hand-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(0deg);
+            transition: 1s var(--default-bezier-ios-start);
+        }
+
+        .box8-hand-js:first-child {
+            transform: rotate(var(--rHours));
+        }
+
+        .box8-hand-js:nth-child(2) {
+            transform: rotate(var(--rMinutes));
+        }
+
+        .box8-hand-js:nth-child(3) {
+            transform: rotate(var(--rSeconds));
+        }
+
+        .box8-h {
+            position: relative;
+            width: 14px;
+            height: 100px;
+            border-radius: 10px;
+            background-color: rgb(70, 70, 70);
+            display: flex;
+            transition: 1s var(--default-bezier-ios-start);
+        }
+
+        .box8-m {
+            position: relative;
+            width: 8px;
+            height: 180px;
+            border-radius: 10px;
+            background-color: rgb(70, 70, 70);
+            display: flex;
+            transition: 1s var(--default-bezier-ios-start);
+        }
+
+        .box8-s {
+            position: relative;
+            width: 4px;
+            height: 240px;
+            border-radius: 10px;
+            background-color: #3795ec;
+            display: flex;
+            z-index: 2;
+            transition: 1s var(--default-bezier-ios-start);
+        }
+
+        .box8-hand-t-s::after {
+            position: absolute;
+            content: "";
+            width: 12px;
+            height: 12px;
+            border-radius: 20px;
+            background-color: #3795ec;
+            border: 4px rgb(70, 70, 70) solid;
+            display: flex;
+            justify-self: center;
+            align-self: center;
+        }
+
+        .box8-p {
+            position: absolute;
+            z-index: 2;
+            content: "";
+            width: 4px;
+            height: 4px;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .box8-box {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            background-color: #3795ec;
+            color: white;
+            width: 75px;
+            height: 30px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
@@ -1343,6 +1785,79 @@
                 </div>
             </div>
         </div>
+        <div class="side">
+            <div class="sidename">NB Clock</div>
+            <div class="box8">
+                <div class="box8-line-box">
+                    <div class="box8-line-long-out">
+                        <div class="box8-line-long"></div>
+                        <div class="box8-line-long"></div>
+                    </div>
+                    <div class="box8-line-long-out">
+                        <div class="box8-line-long"></div>
+                        <div class="box8-line-long"></div>
+                    </div>
+                    <div class="box8-line-long-out">
+                        <div class="box8-line-long"></div>
+                        <div class="box8-line-long"></div>
+                    </div>
+                    <div class="box8-line-long-out">
+                        <div class="box8-line-long"></div>
+                        <div class="box8-line-long"></div>
+                    </div>
+                    <div class="box8-line-long-out">
+                        <div class="box8-line-long"></div>
+                        <div class="box8-line-long"></div>
+                    </div>
+                    <div class="box8-line-long-out">
+                        <div class="box8-line-long"></div>
+                        <div class="box8-line-long"></div>
+                    </div>
+                </div>
+                <div class="box8-hand">
+                    <div class="box8-hand-js">
+                        <div class="box8-hand-t box8-hand-t-h">
+                            <div class="box8-h"></div>
+                        </div>
+                    </div>
+                    <div class="box8-hand-js">
+                        <div class="box8-hand-t box8-hand-t-m">
+                            <div class="box8-m"></div>
+                        </div>
+                    </div>
+                    <div class="box8-hand-js">
+                        <div class="box8-hand-t box8-hand-t-s">
+                            <div class="box8-s"></div>
+                        </div>
+                        <div class="box8-p"></div>
+                    </div>
+                </div>
+                <div class="box8-box" onclick="point()">Point</div>
+                <script>
+                    var obj = new Date();
+                    var hours = obj.getHours();
+                    var minutes = obj.getMinutes();
+                    var seconds = obj.getSeconds();
+                    if (hours > 12) {
+                        hours = hours - 12;
+                    } else { }
+                    var rHours = hours * 30 + minutes * 0.5 + "deg";
+                    var rMinutes = minutes * 6 + seconds * 0.1 + "deg";
+                    var rSeconds = seconds * 6 + "deg";
+                    document.documentElement.style.setProperty("--rHours", rHours);
+                    document.documentElement.style.setProperty("--rMinutes", rMinutes);
+                    document.documentElement.style.setProperty("--rSeconds", rSeconds);
+
+                    function point() {
+                        document.getElementsByClassName("box8-h")[0].style.height = "14px";
+                        document.getElementsByClassName("box8-m")[0].style.height = "8px";
+                        document.getElementsByClassName("box8-s")[0].style.height = "4px";
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+    </div>
     </div>
     <div class="hvh"></div>
 </body>
