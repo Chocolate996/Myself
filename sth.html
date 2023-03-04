@@ -111,7 +111,7 @@
             width: 5px;
             height: 50%;
             font-size: 12px;
-            background-color: #3795ec;
+            background-color: var(--default-color);
             opacity: 0;
             transition: 0.4s var(--default-bezier-start);
         }
@@ -258,7 +258,7 @@
 
         /* iThink的统一调用库 */
         :root {
-            --default-color: rgba(233, 193, 147, 0.25);
+            --default-color: #4f9fe9;
 
             --text-white: rgb(255, 255, 255);
             --text-white-1: rgba(255, 255, 255, 0.75);
@@ -370,7 +370,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background-image: url(https://source.unsplash.com/2560x1440/?encryption,natural);
+            background-image: url(https://bing.shangzhenyang.com/api/1080p);
             filter: saturate(0)brightness(110%);
             background-size: cover;
             background-position: center;
@@ -552,10 +552,12 @@
 
         @keyframes box3 {
             0% {
+                filter: blur(3px);
                 opacity: 0;
             }
 
             20% {
+                filter: blur(0px);
                 opacity: 1;
             }
 
@@ -595,7 +597,7 @@
             border-radius: 10px;
             background-size: cover;
             background-position: center;
-            background-image: url(https://source.unsplash.com/2560x1440/);
+            background-image: url(https://bing.shangzhenyang.com/api/1080p);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -609,7 +611,7 @@
             height: 200px;
             background-size: cover;
             background-position: center;
-            background-image: url(https://source.unsplash.com/2560x1440/);
+            background-image: url(https://bing.shangzhenyang.com/api/1080p);
         }
 
         .box5-blur::before {
@@ -621,7 +623,7 @@
             height: 200px;
             background-size: cover;
             background-position: center;
-            background-image: url(https://source.unsplash.com/2560x1440/);
+            background-image: url(https://bing.shangzhenyang.com/api/1080p);
         }
 
         .box6 {
@@ -644,7 +646,7 @@
             border-radius: 10px;
             background-size: cover;
             background-position: center;
-            background-image: url(https://source.unsplash.com/2560x1440/);
+            background-image: url(https://bing.shangzhenyang.com/api/1080p);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1164,8 +1166,8 @@
 
         .box8-hb {
             position: absolute;
-            width: 400px;
-            height: 400px;
+            width: 450px;
+            height: 450px;
             border-radius: 100%;
             box-sizing: border-box;
             border: 12px rgb(70, 70, 70) solid;
@@ -1176,8 +1178,8 @@
 
         .box8-mb {
             position: absolute;
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 100%;
             box-sizing: border-box;
             border: 2px rgb(70, 70, 70) solid;
@@ -1188,14 +1190,78 @@
 
         .box8-sb {
             position: absolute;
-            width: 250px;
-            height: 250px;
+            width: 300px;
+            height: 300px;
             border-radius: 100%;
             box-sizing: border-box;
             border: 6px #3795ec solid;
             opacity: 0;
             transform: scale(var(--box8-b));
             transition: 1s var(--default-bezier-ios-start);
+        }
+
+        .box9-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .box9-t,
+        .box9-g {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box9-t-s,
+        .box9-g-s {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box9-t-s:last-child,
+        .box9-g-s:last-child {
+            position: absolute;
+        }
+
+        .box9-t-s:first-child {
+            animation: 1.4s box9 var(--default-bezier-start) infinite;
+        }
+
+        .box9-t-s:last-child {
+            filter: blur(7px);
+            opacity: 0;
+            animation: 1.4s box9-t2 var(--default-bezier-start) infinite;
+            animation-delay: 1.4s;
+        }
+
+        .box9-g-s:first-child {
+            animation: 1.4s box9 var(--default-bezier-start) infinite;
+        }
+
+        .box9-g-s:last-child {
+            filter: blur(7px);
+            opacity: 0;
+            animation: 1.4s box9-t2 var(--default-bezier-start) infinite;
+            animation-delay: 1.4s;
+        }
+
+        @keyframes box9 {
+            50% {
+                filter: blur(7px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes box9-t2 {
+            50% {
+                filter: blur(0);
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -1906,24 +1972,69 @@
 
                     document.documentElement.style.setProperty("--box8-b", "0");
 
+                    var no = getComputedStyle(document.querySelectorAll(".box8-line-long")[0]).height;
+                    console.log(no)
                     function point() {
-                        document.getElementsByClassName("box8-h")[0].style.height = "14px";
-                        document.getElementsByClassName("box8-m")[0].style.height = "8px";
-                        document.getElementsByClassName("box8-s")[0].style.height = "4px";
-                        document.getElementsByClassName("box8-hb")[0].style.opacity = "1";
-                        document.getElementsByClassName("box8-mb")[0].style.opacity = "1";
-                        document.getElementsByClassName("box8-sb")[0].style.opacity = "1";
-                        document.documentElement.style.setProperty("--box8-b", "100%");
-                        let arr = document.getElementsByClassName("box8-line-long");
-                        for (let i = 0, len = arr.length; i < len; i++) {
-                            document.getElementsByClassName("box8-line-long")[i].style.height = "4px";
+                        var no = getComputedStyle(document.querySelectorAll(".box8-line-long")[0]).height;
+                        if (no == "20px") {
+                            document.getElementsByClassName("box8-h")[0].style.height = "14px";
+                            document.getElementsByClassName("box8-m")[0].style.height = "8px";
+                            document.getElementsByClassName("box8-s")[0].style.height = "4px";
+                            document.getElementsByClassName("box8-hb")[0].style.opacity = "1";
+                            document.getElementsByClassName("box8-mb")[0].style.opacity = "1";
+                            document.getElementsByClassName("box8-sb")[0].style.opacity = "1";
+                            document.documentElement.style.setProperty("--box8-b", "100%");
+                            let arr = document.getElementsByClassName("box8-line-long");
+                            for (let i = 0, len = arr.length; i < len; i++) {
+                                document.getElementsByClassName("box8-line-long")[i].style.height = "4px";
+                            }
+                        } else {
+                            document.getElementsByClassName("box8-h")[0].style.height = "";
+                            document.getElementsByClassName("box8-m")[0].style.height = "";
+                            document.getElementsByClassName("box8-s")[0].style.height = "";
+                            document.getElementsByClassName("box8-hb")[0].style.opacity = "";
+                            document.getElementsByClassName("box8-mb")[0].style.opacity = "";
+                            document.getElementsByClassName("box8-sb")[0].style.opacity = "";
+                            document.documentElement.style.setProperty("--box8-b", "0");
+                            let arr = document.getElementsByClassName("box8-line-long");
+                            for (let i = 0, len = arr.length; i < len; i++) {
+                                document.getElementsByClassName("box8-line-long")[i].style.height = "";
+                            }
                         }
+
                     }
                 </script>
             </div>
         </div>
-    </div>
-    </div>
+        <div class="side">
+            <div class="sidename">Text and Graphic Animation Suggestion</div>
+            <div class="box9">
+                <div class="box9-box">
+                    <div class="box9-g">
+                        <div class="box9-g-s"><svg width="32" height="32" viewBox="0 0 28 28" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.61718 24.5045C7.11335 24.5045 7.54554 24.3191 8.07756 24.0137L21.8872 16.0246C22.8957 15.4293 23.3094 14.9826 23.3094 14.2581C23.3094 13.5337 22.8957 13.087 21.8872 12.5034L8.07756 4.50461C7.54554 4.19711 7.11335 4.02344 6.61718 4.02344C5.66562 4.02344 5 4.74507 5 5.90171V22.6166C5 23.7733 5.66562 24.5045 6.61718 24.5045Z"
+                                    fill="black" />
+                            </svg>
+                        </div>
+                        <div class="box9-g-s">
+                            <svg width="32" height="32" viewBox="0 0 28 28" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.67466 23.4653H11.4246C12.5243 23.4653 13.0971 22.8925 13.0971 21.7832V5.6725C13.0971 4.54492 12.5243 4.00844 11.4246 4H8.67466C7.57497 4 7.00005 4.57281 7.00005 5.6725V21.7832C6.99372 22.8925 7.56653 23.4653 8.67466 23.4653ZM17.5443 23.4653H20.2846C21.3939 23.4653 21.9592 22.8925 21.9592 21.7832V5.6725C21.9592 4.54492 21.3939 4 20.2846 4H17.5443C16.435 4 15.8601 4.57281 15.8601 5.6725V21.7832C15.8601 22.8925 16.4287 23.4653 17.5443 23.4653Z"
+                                    fill="black" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="box9-t">
+                        <div class="box9-t-s">iKun!</div>
+                        <div class="box9-t-s">Baby</div>
+                        <!-- 只因！ -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="hvh"></div>
 </body>
