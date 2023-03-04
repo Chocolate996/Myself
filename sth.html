@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <title>Sth fun</title>
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <style>
@@ -256,9 +257,62 @@
             height: 100vh;
         }
 
+        .important {
+            position: fixed;
+            z-index: 10;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--box-white-1);
+            -webkit-backdrop-filter: blur(20px)brightness(0.8)saturate(180%);
+            backdrop-filter: blur(20px)brightness(0.8)saturate(180%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+        }
+
+        .important-box {
+            width: 800px;
+            height: 500px;
+            border-radius: 20px;
+            border: 1px rgb(224, 224, 224) solid;
+            background-color: white;
+            box-shadow: 0px 5px 20px -10px rgba(0, 0, 0, 0.25), 0px 10px 20px -15px rgba(0, 0, 0, 0.25);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .important-text {
+            margin-top: 25px;
+            font-size: 64px;
+            font-weight: bold;
+        }
+
+        .important-url {
+            margin-top: 45px;
+            padding: 15px 25px;
+            border-radius: 100px;
+            font-size: 16px;
+            background-color: var(--default-color);
+            color: white;
+        }
+
+        .important-img {
+            position: relative;
+        }
+
+        .important-desktop,
+        .important-updata {
+            top: 0;
+            position: absolute;
+        }
+
         /* iThink的统一调用库 */
         :root {
             --default-color: #4f9fe9;
+            --default-color-light: #2389e9;
 
             --text-white: rgb(255, 255, 255);
             --text-white-1: rgba(255, 255, 255, 0.75);
@@ -1267,6 +1321,79 @@
 </head>
 
 <body>
+    <div class="important">
+        <div class="important-box">
+            <div class="important-img">
+                <div class="important-chrome" id="impc">
+                    <svg t="1677896513484" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="3101" width="128" height="128">
+                        <path
+                            d="M350.818 37.665c60.767-21.263 125.757-28.873 189.946-25.413 174.617 7.427 339.659 116.326 417.428 272.484-16.202 3.604-32.804 2.293-49.261 2.476-118.183 0.255-236.367 0.619-354.549 0.801-42.271-6.736-86.617-3.787-126.484 12.525-60.147 23.556-108.935 74.238-130.271 135.222-21.335 59.165-15.91 126.594 12.67 182.445-72.09-126.521-146.4-251.767-219.437-377.706 60.767-94.081 153.646-167.263 259.959-202.834z"
+                            fill="#D94F42" p-id="3102"></path>
+                        <path
+                            d="M28.636 380.454c13.143-49.552 34.553-96.848 62.223-139.956 73.036 125.938 147.347 251.185 219.437 377.706 24.722 46.567 65.827 84.323 114.652 104.348 63.351 26.469 138.718 22.028 198.393-12.015 29.455-16.165 53.958-39.831 74.42-66.265-69.578 122.807-140.101 245.068-209.97 367.694-105.731-4.442-209.388-44.346-291.308-111.229C98.871 821.875 32.461 705.33 15.968 580.812c-8.156-66.737-5.57-135.441 12.67-200.358z"
+                            fill="#19A05E" p-id="3103"></path>
+                        <path
+                            d="M427.895 300.538c39.868-16.311 84.213-19.261 126.484-12.525 64.116 12.889 122.37 53.375 154.774 110.391 44.346 75.003 40.123 175.418-11.396 245.869-20.462 26.433-44.965 50.098-74.42 66.265-59.675 34.043-135.041 38.484-198.393 12.015-48.825-20.025-89.93-57.781-114.652-104.348-28.581-55.852-34.006-123.28-12.67-182.445 21.335-60.985 70.124-111.666 130.271-135.222m53.415 32.112c-67.393 10.668-125.757 62.878-144.07 128.56-14.892 51.445-6.19 109.409 24.54 153.5 32.95 48.897 90.986 79.844 150.041 79.043 53.849 0.765 107.115-24.649 140.939-66.446 27.307-33.095 42.307-76.131 40.996-119.057-0.4-57.781-31.13-114.069-78.934-146.4-38.412-26.797-87.454-36.918-133.511-29.2z"
+                            fill="#F2F2F2" p-id="3104"></path>
+                        <path
+                            d="M554.38 288.013c118.183-0.182 236.367-0.546 354.549-0.801 16.457-0.182 33.059 1.129 49.261-2.476 39.685 76.35 57.818 163.33 53.667 249.219-3.495 106.605-44.054 211.245-111.411 293.747-68.012 83.741-163.549 145.053-268.551 170.357-46.967 12.234-95.756 15.219-144.107 13.908 69.869-122.625 140.393-244.886 209.97-367.694 51.519-70.451 55.742-170.867 11.396-245.869-32.404-57.017-90.658-97.503-154.774-110.391z"
+                            fill="#FDCA41" p-id="3105"></path>
+                        <path
+                            d="M481.308 332.65c46.058-7.718 95.1 2.403 133.511 29.2 47.805 32.331 78.534 88.62 78.934 146.4 1.311 42.926-13.69 85.962-40.996 119.057-33.824 41.797-87.09 67.211-140.939 66.446-59.055 0.801-117.091-30.146-150.041-79.043-30.73-44.091-39.43-102.054-24.54-153.5 18.314-65.682 76.677-117.892 144.07-128.56z"
+                            fill="#4B8BF5" p-id="3106"></path>
+                    </svg>
+                </div>
+                <div class="important-desktop" id="impd">
+                    <svg width="128" height="128" viewBox="0 0 29 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M3.05756 18.4226C2.56092 18.4226 2.24756 18.1092 2.24756 17.6126V3.75962C2.24756 3.25126 2.56092 2.94751 3.05756 2.94751H25.3864C25.8831 2.94751 26.1964 3.25126 26.1964 3.75962V17.6126C26.1964 18.1092 25.8831 18.4226 25.3864 18.4226H3.05756Z"
+                            fill="white" />
+                        <path
+                            d="M2.92101 20.67H25.5131C27.344 20.67 28.4437 19.5703 28.4437 17.7394V3.62105C28.4437 1.79223 27.344 0.702148 25.5131 0.702148H2.92101C1.09968 0.702148 0 1.79223 0 3.62105V17.7394C0 19.5703 1.09968 20.67 2.92101 20.67ZM3.05741 18.4226C2.56077 18.4226 2.24741 18.1092 2.24741 17.6126V3.75956C2.24741 3.2512 2.56077 2.94745 3.05741 2.94745H25.3863C25.883 2.94745 26.1963 3.2512 26.1963 3.75956V17.6126C26.1963 18.1092 25.883 18.4226 25.3863 18.4226H3.05741ZM10.4006 23.3494H18.0431V20.4312H10.4006V23.3494ZM10.343 24.9061H18.1008C18.6839 24.9061 19.1564 24.423 19.1564 23.843C19.1564 23.2629 18.6839 22.7819 18.1008 22.7819H10.343C9.75984 22.7819 9.27773 23.2629 9.27773 23.843C9.27773 24.423 9.75984 24.9061 10.343 24.9061Z"
+                            fill="black" />
+                    </svg>
+                </div>
+                <div class="important-updata" id="impu">
+                    <div class="important-updata" id="impu">
+                        <svg width="128" height="128" viewBox="0 0 128 128" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_1800_169)">
+                                <path
+                                    d="M43.8522 4.70809C51.448 2.05021 59.5718 1.09896 67.5954 1.53146C89.4225 2.45984 110.053 16.0722 119.774 35.592C117.749 36.0425 115.673 35.8786 113.616 35.9015C98.8434 35.9333 84.0704 35.9788 69.2977 36.0016C64.0138 35.1596 58.4706 35.5282 53.4872 37.5672C45.9688 40.5117 39.8703 46.847 37.2033 54.47C34.5364 61.8656 35.2145 70.2942 38.787 77.2756C29.7758 61.4605 20.487 45.8047 11.3574 30.0623C18.9533 18.3022 30.563 9.15446 43.8522 4.70809Z"
+                                    fill="#D94F42" />
+                                <path
+                                    d="M3.57951 47.5568C5.22239 41.3628 7.89864 35.4508 11.3574 30.0623C20.4869 45.8045 29.7758 61.4604 38.787 77.2755C41.8773 83.0964 47.0154 87.8159 53.1185 90.319C61.0374 93.6276 70.4583 93.0725 77.9176 88.8171C81.5995 86.7965 84.6624 83.8383 87.2201 80.534C78.5229 95.8849 69.7075 111.168 60.9739 126.496C47.7575 125.941 34.8004 120.953 24.5604 112.592C12.3589 102.734 4.05764 88.1663 1.99601 72.6015C0.976511 64.2594 1.29976 55.6714 3.57976 47.5568H3.57951Z"
+                                    fill="#19A05E" />
+                                <path
+                                    d="M53.4868 37.5672C58.4703 35.5284 64.0134 35.1596 69.2973 36.0016C77.3118 37.6128 84.5935 42.6735 88.644 49.8005C94.1873 59.1759 93.6594 71.7278 87.2195 80.5341C84.6618 83.8383 81.5989 86.7964 77.917 88.8173C70.4576 93.0726 61.0369 93.6277 53.1179 90.3191C47.0148 87.816 41.8766 83.0965 38.7864 77.2756C35.2138 70.2941 34.5356 61.8656 37.2026 54.47C39.8695 46.8469 45.9681 40.5117 53.4865 37.5672M60.1634 41.5812C51.7393 42.9147 44.4438 49.441 42.1546 57.6512C40.2931 64.0819 41.3809 71.3274 45.2221 76.8388C49.3409 82.9509 56.5954 86.8192 63.9773 86.7191C70.7084 86.8147 77.3666 83.638 81.5946 78.4134C85.008 74.2765 86.883 68.897 86.7192 63.5312C86.6692 56.3086 82.8279 49.2726 76.8524 45.2313C72.0509 41.8816 65.9205 40.6165 60.1634 41.5812Z"
+                                    fill="#F2F2F2" />
+                                <path
+                                    d="M69.2976 36.0017C84.0705 35.9789 98.8435 35.9334 113.616 35.9015C115.673 35.8788 117.749 36.0427 119.774 35.592C124.735 45.1358 127.001 56.0083 126.482 66.7444C126.045 80.07 120.976 93.15 112.556 103.463C104.054 113.93 92.1123 121.594 78.987 124.757C73.1161 126.287 67.0175 126.66 60.9736 126.496C69.7073 111.168 78.5228 95.8852 87.2199 80.5342C93.6598 71.7278 94.1876 59.1758 88.6444 49.8005C84.5939 42.6734 77.3121 37.6127 69.2976 36.0017Z"
+                                    fill="#FDCA41" />
+                                <path
+                                    d="M60.1633 41.5813C65.9206 40.6165 72.0508 41.8816 76.8522 45.2313C82.8278 49.2726 86.6689 56.3088 86.7189 63.5313C86.8828 68.897 85.0077 74.2765 81.5944 78.4134C77.3664 83.638 70.7082 86.8148 63.9771 86.7191C56.5952 86.8193 49.3407 82.9509 45.2219 76.8388C41.3807 71.3274 40.2932 64.082 42.1544 57.6513C44.4437 49.441 51.7391 42.9148 60.1632 41.5813H60.1633Z"
+                                    fill="#4B8BF5" />
+                                <path
+                                    d="M104.069 59C106.072 59 107.457 57.6071 107.457 55.5658V16.9556L107.085 6.82686L105.022 7.84564L115.418 19.411L122.48 26.3728C123.09 26.9874 123.928 27.3536 124.892 27.3536C126.766 27.3536 128.143 25.9544 128.143 24.0623C128.143 23.1542 127.816 22.3393 127.102 21.6058L106.6 1.08342C105.92 0.377924 105.009 0 104.069 0C103.129 0 102.212 0.377924 101.538 1.08342L81.061 21.6058C80.3526 22.3393 80 23.1542 80 24.0623C80 25.9544 81.3769 27.3536 83.2507 27.3536C84.2153 27.3536 85.0736 26.9874 85.6631 26.3728L92.7138 19.411L103.091 7.84564L101.047 6.82686L100.674 16.9556V55.5658C100.674 57.6071 102.066 59 104.069 59Z"
+                                    fill="#5B5B5B" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_1800_169">
+                                    <rect width="128" height="128" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+                    </div>
+                </div>
+            </div>
+            <div class="important-text" id="impt">Using Chrome</div>
+            <a href="https://www.google.cn/intl/zh-CN/chrome/" u>
+                <div class="important-url" id="impb">Download</div>
+            </a>
+        </div>
+    </div>
     <div class="outside">
         <div class="share">
             <div>
@@ -2039,7 +2166,7 @@
     <div class="hvh"></div>
 </body>
 
-<script>
+<script type="module">
     var w = document.querySelector(".outside");
     var nh = parseFloat(getComputedStyle(w).width);
     var h = parseFloat(getComputedStyle(w).width) + 25 + "px";
@@ -2059,7 +2186,99 @@
         for (let i = 0, len = arr.length; i < len; i++) {
             document.getElementsByClassName("side")[i].style.height = maxh;
         }
-    }
+    };
+
+    // export const $browserV = (() => {
+    //     const ua = navigator.userAgent;
+    //     let browser = 0;
+    //     let version = 0;
+    //     if (ua.indexOf("Chrome") > -1) {
+    //         browser = "chrome";
+    //         version = Number(
+    //             ua
+    //                 .match(/Chrome\/[\d.]+/)[0]
+    //                 .split("/")[1]
+    //                 .split(".")[0]
+    //         );
+    //     } else if (ua.indexOf("Safari") > -1) {
+    //         browser = "safari";
+    //         version = Number(
+    //             ua
+    //                 .match(/Version\/[\d.]+/)[0]
+    //                 .split("/")[1]
+    //                 .split(".")[0]
+    //         );
+    //     }
+    //     return { browser, version };
+    // })();
+
+    export const $browserV = (() => {
+        const ua = navigator.userAgent;
+        let browser = "";
+        let version = 0;
+        if (ua.indexOf("Chrome") > -1) {
+            browser = "chrome";
+            version = Number(
+                ua
+                    .match(/Chrome\/[\d.]+/)[0]
+                    .split("/")[1]
+                    .split(".")[0]
+            );
+        } else if (ua.indexOf("Safari") > -1) {
+            browser = "safari";
+            version = Number(
+                ua
+                    .match(/Version\/[\d.]+/)[0]
+                    .split("/")[1]
+                    .split(".")[0]
+            );
+        } else if (ua.indexOf("Firefox") > -1) {
+            browser = "firefox";
+            version = Number(
+                ua
+                    .match(/Firefox\/[\d.]+/)[0]
+                    .split("/")[1]
+                    .split(".")[0]
+            );
+        }
+        return { browser, version };
+    })();
+
+    console.log($browserV);
+    // 冷少！
+    var browser = $browserV["browser"];
+    var version = $browserV["version"];
+    if (browser == "chrome") {
+        if (version >= 76) {
+            if (/Android | webOS | iPhone /i.test(navigator.userAgent)) {
+                document.getElementsByClassName("important")[0].style.opacity = "1";
+                document.getElementById("impc").style.opacity = "0";
+                document.getElementById("impd").style.opacity = "1";
+                document.getElementById("impu").style.opacity = "0";
+                document.getElementById("impt").innerText = "Using Computer";
+                document.querySelector(".important-url").parentNode.removeChild(document.querySelector(".important-url"));
+            } else {
+                document.getElementsByClassName("important")[0].style.opacity = "1";
+                document.getElementById("impc").style.opacity = "1";
+                document.getElementById("impu").style.opacity = "0";
+                document.getElementById("impd").style.opacity = "0";
+                document.getElementById("impt").innerText = "Thanks";
+                document.querySelector(".important").parentNode.removeChild(document.querySelector(".important"));
+            };
+        } else {
+            document.getElementsByClassName("important")[0].style.opacity = "1";
+            document.getElementById("impc").style.opacity = "0";
+            document.getElementById("impd").style.opacity = "0";
+            document.getElementById("impu").style.opacity = "1";
+            document.getElementById("impt").innerText = "Updata Chrome";
+            document.getElementById("impb").innerText = "Updata";
+        };
+    } else {
+        document.getElementsByClassName("important")[0].style.opacity = "1";
+        document.getElementById("impu").style.opacity = "0";
+        document.getElementById("impd").style.opacity = "0";
+    };
+
 
 </script>
 
