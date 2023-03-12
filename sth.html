@@ -47,7 +47,9 @@
         }
 
         .outside {
+            position: relative;
             padding: 25px;
+            overflow: hidden;
         }
 
         .side {
@@ -61,7 +63,6 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            overflow: hidden;
         }
 
         .side:last-child {
@@ -83,6 +84,8 @@
             border-radius: 10px;
             box-sizing: border-box;
             color: var(--text-black-3);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(10px);
             transition: 0.2s var(--default-bezier-start);
         }
 
@@ -1317,6 +1320,90 @@
                 opacity: 1;
             }
         }
+
+        .box10 {
+            position: relative;
+            font-size: 24px;
+            color: #202124;
+            display: flex;
+            height: 48px;
+            background: white;
+            border: 1px solid #dfe1e5;
+            border-radius: 100px;
+            width: 256px;
+            transition: 0.5s var(--default-bezier-start);
+        }
+
+        .box10:hover {
+            box-shadow: 0 1px 10px var(--shadow-1);
+            border-color: rgba(223, 225, 229, 0);
+        }
+
+        .box10-i {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            width: 172px;
+            margin: 0 12px 0 24px;
+            overflow: scroll;
+        }
+
+        .box10-b {
+            position: relative;
+            margin: 12px;
+            width: 24px;
+            height: 24px;
+            border: var(--default-color) 4px solid;
+            box-sizing: border-box;
+            border-radius: 100%;
+            background-color: transparent;
+            opacity: 0;
+            animation: 4s box10-b var(--default-bezier-start) infinite;
+            transition: 1s var(--default-bezier-start);
+        }
+
+        .box10-b:hover {
+            opacity: 1;
+        }
+
+        .box10-bn {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            content: "";
+            margin: 12px;
+            width: 24px;
+            height: 24px;
+            border: var(--default-color) 4px solid;
+            box-sizing: border-box;
+            border-radius: 100%;
+            background-color: transparent;
+            pointer-events: none;
+        }
+
+        @keyframes box10-b {
+            50% {
+                filter: blur(5px);
+            }
+        }
+
+        .box11 {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            background-image: url(https://bing.shangzhenyang.com/api/1080p);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .box11>div {
+            color: white;
+            text-shadow: 0 0 10px var(--box-black-1);
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -2138,7 +2225,8 @@
             <div class="box9">
                 <div class="box9-box">
                     <div class="box9-g">
-                        <div class="box9-g-s"><svg width="32" height="32" viewBox="0 0 28 28" fill="none"
+                        <div class="box9-g-s">
+                            <svg width="32" height="32" viewBox="0 0 28 28" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M6.61718 24.5045C7.11335 24.5045 7.54554 24.3191 8.07756 24.0137L21.8872 16.0246C22.8957 15.4293 23.3094 14.9826 23.3094 14.2581C23.3094 13.5337 22.8957 13.087 21.8872 12.5034L8.07756 4.50461C7.54554 4.19711 7.11335 4.02344 6.61718 4.02344C5.66562 4.02344 5 4.74507 5 5.90171V22.6166C5 23.7733 5.66562 24.5045 6.61718 24.5045Z"
@@ -2161,6 +2249,57 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="side">
+            <div class="sidename">Simple Search</div>
+            <div class="box10">
+                <input class="box10-i" id="box10-input" placeholder="Search" onkeydown="Enter()" />
+                <div class="box10-bn"></div>
+                <button class="box10-b" onclick="EnterBox()"></button>
+            </div>
+            <script>
+                function Enter() {
+                    if (event.keyCode == 13) {
+                        var box10get = document.getElementById("box10-input").value;
+                        var box10encode = encodeURI(box10get.split(' ').reverse().join(' '));
+                        window.location.href = "https://www.baidu.com/s?ie=UTF-8&wd=" + box10encode;
+                    }
+                }
+                function EnterBox() {
+                    var box10get = document.getElementById("box10-input").value;
+                    var box10encode = encodeURI(box10get.split(' ').reverse().join(' '));
+                    window.location.href = "https://www.baidu.com/s?ie=UTF-8&wd=" + box10encode;
+                }
+            </script>
+        </div>
+        <div class="side">
+            <div class="sidename">Bing API</div>
+            <div class="box11">
+                <div style="font-size: 24px;" id="title"></div>
+                <div style="font-size: 32px;" id="more"></div>
+                <div style="font-size: 16px;" id="copyright"></div>
+            </div>
+            <script type="text/javascript">
+                window.addEventListener("load", () => {
+                    fetch("https://bing.shangzhenyang.com/api/json").then(t => {
+                        if (t.ok)
+                            return t.json();
+                        throw new Error(t.statusText)
+                    }
+                    ).then(t => {
+                        if (t) {
+                            const o = t.images[0];
+                            var result = o.copyright.search(" ") + 1;
+                            document.getElementById("title").textContent = o.title;
+                            document.getElementById("more").textContent = o.copyright.substring(0, result);
+                            document.getElementById("copyright").textContent = (o.copyright.substring(result)).substring(1, (o.copyright.substring(result)).length - 1);
+                            console.log(o.copyrightlink);
+                        }
+                    }
+                    )
+                }
+                ); 
+            </script>
         </div>
     </div>
     <div class="hvh"></div>
