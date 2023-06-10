@@ -1404,6 +1404,266 @@
             text-shadow: 0 0 10px var(--box-black-1);
             text-align: center;
         }
+
+        .box12 {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .box12-tl,
+        .box12-tr,
+        .box12-bl,
+        .box12-br,
+        .box12-e,
+        .box12-m {
+            position: absolute;
+        }
+
+        .box12-tl {
+            opacity: 0;
+            animation: 1s tl var(--default-bezier-ios-start) forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes tl {
+            0% {
+                filter: blur(5px);
+                opacity: 0;
+                transform: translateX(40px)translateY(40px);
+            }
+
+            100% {
+                filter: blur(0px);
+                opacity: 1;
+                transform: translateX(0px)translateY(0px);
+            }
+        }
+
+        .box12-tr {
+            opacity: 0;
+            animation: 1s tr var(--default-bezier-ios-start) forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes tr {
+            0% {
+                filter: blur(5px);
+                opacity: 0;
+                transform: translateX(-40px)translateY(40px);
+            }
+
+            100% {
+                filter: blur(0px);
+                opacity: 1;
+                transform: translateX(0px)translateY(0px);
+            }
+        }
+
+        .box12-bl {
+            opacity: 0;
+            animation: 1s bl var(--default-bezier-ios-start) forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes bl {
+            0% {
+                filter: blur(5px);
+                opacity: 0;
+                transform: translateX(40px)translateY(-40px);
+            }
+
+            100% {
+                filter: blur(0px);
+                opacity: 1;
+                transform: translateX(0px)translateY(0px);
+            }
+        }
+
+        .box12-br {
+            opacity: 0;
+            animation: 1s br var(--default-bezier-ios-start) forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes br {
+            0% {
+                filter: blur(5px);
+                opacity: 0;
+                transform: translateX(-40px)translateY(-40px);
+            }
+
+            100% {
+                filter: blur(0px);
+                opacity: 1;
+                transform: translateX(0px)translateY(0px);
+            }
+        }
+
+        .box12-e {
+            opacity: 0;
+            animation: 1.1s e var(--default-bezier-ios-start) forwards;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes e {
+            0% {
+                filter: blur(5px);
+                opacity: 0;
+                transform: translateY(20px)scale(50%);
+            }
+
+            100% {
+                filter: blur(0px);
+                opacity: 1;
+                transform: translateY(0px)scale(1);
+            }
+        }
+
+        .box12-m {
+            opacity: 0;
+            animation: 1.2s m var(--default-bezier-ios-start) forwards;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes m {
+            0% {
+                filter: blur(5px);
+                opacity: 0;
+                transform: translateY(30px)scale(25%);
+            }
+
+            100% {
+                filter: blur(0px);
+                opacity: 1;
+                transform: translateY(0px)scale(1);
+            }
+        }
+
+        .box12-b {
+            animation: 1.3s b cubic-bezier(.6, 0, .28, 1) forwards;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes b {
+            12.5% {
+                transform: translateX(30px);
+            }
+
+            25% {
+                transform: translateX(-25px);
+            }
+
+            37.5% {
+                transform: translateX(20px);
+            }
+
+            50% {
+                transform: translateX(-15px);
+            }
+
+            62.5% {
+                transform: translateX(7px);
+            }
+
+            75% {
+                transform: translateX(-4px);
+            }
+
+            87.5% {
+                transform: translateX(2px);
+            }
+
+            100% {
+                transform: translateX(0px);
+            }
+        }
+
+        .box12-f {
+            animation: 1.2s f var(--default-bezier-ios-start) forwards;
+            animation-delay: 1.57s;
+        }
+
+        @keyframes f {
+            12.5% {
+                transform: translateX(25px);
+            }
+
+            25% {
+                transform: translateX(-20px);
+            }
+
+            37.5% {
+                transform: translateX(15px);
+            }
+
+            50% {
+                transform: translateX(-10px);
+            }
+
+            62.5% {
+                transform: translateX(5px);
+            }
+
+            75% {
+                transform: translateX(-3px);
+            }
+
+            87.5% {
+                transform: translateX(2px);
+            }
+
+            100% {
+                transform: translateX(0px);
+            }
+        }
+
+        .box12-shit {
+            margin-top: 5px;
+            font-weight: bold;
+            opacity: 0;
+            filter: blur(5px);
+            animation: 1.3s shit var(--default-bezier-ios-start) forwards;
+            animation-delay: 1.6s;
+        }
+
+        @keyframes shit {
+            12.5% {
+                transform: translateX(25px);
+            }
+
+            25% {
+                transform: translateX(-20px);
+            }
+
+            37.5% {
+                opacity: 1;
+                filter: blur(0px);
+                transform: translateX(15px);
+            }
+
+            50% {
+                transform: translateX(-10px);
+            }
+
+            62.5% {
+                transform: translateX(5px);
+            }
+
+            75% {
+                transform: translateX(-3px);
+            }
+
+            87.5% {
+                transform: translateX(2px);
+            }
+
+            100% {
+                opacity: 1;
+                filter: blur(0px);
+                transform: translateX(0px);
+            }
+        }
     </style>
 </head>
 
@@ -1528,7 +1788,7 @@
                 <div class="box1-img" id="box1-img"></div>
                 <div class="box1-b"></div>
                 <div class="box1-txt">For<br>You</div>
-                <div>Refresh loading animation.</div>
+                <div style="z-index: 1;">Refresh loading animation.</div>
             </div>
         </div>
         <div class="side side-gray">
@@ -2300,6 +2560,71 @@
                 }
                 ); 
             </script>
+        </div>
+        <div class="side">
+            <div class="sidename">Face</div>
+            <div class="box12">
+                <div class="box12-b">
+                    <div class="box12-tl">
+                        <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M1.6349 8.19014C0 11.3988 0 15.5992 0 24V25C0 26.5 1 28 2.5 28C4 28 5 26.5 5 25V21.2C5 15.4107 5 12.516 6.16234 10.3207C7.10035 8.54913 8.54913 7.10035 10.3207 6.16234C12.516 5 15.4107 5 21.2 5H25C26.5 5 28 4 28 2.5C28 1 26.5 0 25 0H24C15.5992 0 11.3988 0 8.19014 1.6349C5.36771 3.073 3.073 5.36771 1.6349 8.19014Z"
+                                fill="#000000" />
+                        </svg>
+                    </div>
+                    <div class="box12-tr">
+                        <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M91.8099 1.6349C88.6012 0 84.4008 0 76 0H75C73.5 0 72 1 72 2.5C72 4 73.5 5 75 5H78.8C84.5893 5 87.484 5 89.6793 6.16234C91.4509 7.10035 92.8997 8.54913 93.8377 10.3207C95 12.516 95 15.4107 95 21.2V25C95 26.5 96 28 97.5 28C99 28 100 26.5 100 25V24C100 15.5992 100 11.3988 98.3651 8.19014C96.927 5.36771 94.6323 3.073 91.8099 1.6349Z"
+                                fill="#000000" />
+                        </svg>
+                    </div>
+                    <div class="box12-bl">
+                        <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M8.19014 98.3651C11.3988 100 15.5992 100 24 100H25C26.5 100 28 99 28 97.5C28 96 26.5 95 25 95H21.2C15.4107 95 12.516 95 10.3207 93.8377C8.54913 92.8997 7.10035 91.4509 6.16234 89.6793C5 87.484 5 84.5893 5 78.8V75C5 73.5 4 72 2.5 72C1 72 0 73.5 0 75L0 76C0 84.4008 0 88.6012 1.6349 91.8099C3.073 94.6323 5.36771 96.927 8.19014 98.3651Z"
+                                fill="#000000" />
+                        </svg>
+                    </div>
+                    <div class="box12-br">
+                        <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M98.3651 91.8099C100 88.6012 100 84.4008 100 76V75C100 73.5 99 72 97.5 72C96 72 95 73.5 95 75V78.8C95 84.5893 95 87.484 93.8377 89.6793C92.8997 91.4509 91.4509 92.8997 89.6793 93.8377C87.484 95 84.5893 95 78.8 95H75C73.5 95 72 96 72 97.5C72 99 73.5 100 75 100H76C84.4008 100 88.6012 100 91.8099 98.3651C94.6323 96.927 96.927 94.6323 98.3651 91.8099Z"
+                                fill="#000000" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="box12-f">
+                    <div class="box12-e">
+
+                        <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M33 29.3611C33 28.0571 34.0571 27 35.3611 27C36.6651 27 37.7222 28.0571 37.7222 29.3611V44.6389C37.7222 45.9429 36.6651 47 35.3611 47C34.0571 47 33 45.9429 33 44.6389V29.3611Z"
+                                fill="#000000" />
+                            <path
+                                d="M62.2778 29.3611C62.2778 28.0571 63.3349 27 64.6389 27C65.9429 27 67 28.0571 67 29.3611V44.6389C67 45.9429 65.9429 47 64.6389 47C63.3349 47 62.2778 45.9429 62.2778 44.6389V29.3611Z"
+                                fill="#000000" />
+                        </svg>
+                    </div>
+                    <div class="box12-m">
+
+                        <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M50.0022 76.3434C44.5044 76.3434 36.4387 73.0702 34.2962 65.8425C34.1432 65.3262 33.9046 64.297 33.6675 63.2742C33.4454 62.3158 33.2246 61.363 33.0766 60.8431C32.3146 58.1653 29.9901 58.9427 29.0931 59.8433C28.0104 60.9303 28.6658 63.7525 29.0588 65.4448C29.0915 65.5856 29.1225 65.7189 29.1504 65.8425C31.4147 75.861 41.5044 81.3434 50.0022 81.3434C58.5 81.3434 68.5859 75.8634 70.8497 65.8434C70.8776 65.7198 70.9085 65.5867 70.9412 65.4458C71.3342 63.7533 71.9895 60.9306 70.907 59.8434C70.0102 58.9427 67.6862 58.1652 66.9243 60.8434C66.7764 61.3634 66.5556 62.3162 66.3335 63.2747C66.0965 64.2976 65.8579 65.3272 65.7049 65.8434C63.5628 73.0722 55.5 76.3434 50.0022 76.3434Z"
+                                fill="#000000" />
+                        </svg>
+
+                    </div>
+                </div>
+            </div>
+            <div class="box12-shit">No money</div>
+            <div style="position: absolute;bottom: 25px;">Refresh loading animation.</div>
         </div>
     </div>
     <div class="hvh"></div>

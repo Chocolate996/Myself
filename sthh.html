@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div>这个是编码不是加密</div>
+    <div>
+        <div class="img" style="background-color: rgb(241,241,241);">
+            <p id="out_ms">Text</p>
+        </div>
+        <div>
+            <input placeholder="编码" required="" type="text" id="start">
+            <input type="submit" value="GO" onclick="start()">
+        </div>
+    </div>
+    <div>
+        <div class="img" style="background-color: rgb(241,241,241);">
+            <p id="get_ms">Text</p>
+        </div>
+        <div>
+            <input placeholder="解码" required="" type="text" id="end">
+            <input type="submit" value="GO" onclick="end()">
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    function start() {
+        var ms = escape(document.getElementById('start').value);
+        console.log(ms);
+        document.getElementById("out_ms").innerText = ms;
+    }
+    function end() {
+        var dms = unescape(document.getElementById('end').value);
+        console.log(dms);
+        document.getElementById("get_ms").innerText = dms;
+    }
+</script>
+
+
+</html>

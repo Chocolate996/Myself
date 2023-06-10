@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: unset;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            background-color: #c4c4c4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* iThink的统一调用库 */
+        :root {
+            --default-color: rgb(255, 255, 255);
+
+            --text-white: rgb(255, 255, 255);
+            --text-white-1: rgba(255, 255, 255, 0.75);
+            --text-white-2: rgba(255, 255, 255, 0.50);
+            --text-white-3: rgba(255, 255, 255, 0.25);
+            --text-black: rgb(0, 0, 0);
+            --text-black-1: rgba(0, 0, 0, 0.80);
+            --text-black-2: rgba(0, 0, 0, 0.50);
+            --text-black-3: rgba(0, 0, 0, 0.25);
+
+            --box-white: rgba(255, 255, 255, 1);
+            --box-white-1: rgba(255, 255, 255, 0.75);
+            --box-white-2: rgba(255, 255, 255, 0.50);
+            --box-white-3: rgba(255, 255, 255, 0.30);
+            --box-white-4: rgba(255, 255, 255, 0.25);
+            --box-white-5: rgba(255, 255, 255, 0.15);
+            --box-white-6: rgba(255, 255, 255, 0.10);
+            --box-black: rgba(0, 0, 0, 1);
+            --box-black-1: rgba(0, 0, 0, 0.75);
+            --box-black-2: rgba(0, 0, 0, 0.50);
+            --box-black-3: rgba(0, 0, 0, 0.25);
+            --box-black-4: rgba(0, 0, 0, 0.15);
+            --box-black-5: rgba(0, 0, 0, 0.10);
+
+            --shadow-1: rgba(0, 0, 0, 0.25);
+            --shadow-2: rgba(0, 0, 0, 0.20);
+            --shadow-3: rgba(0, 0, 0, 0.15);
+            --shadow-4: rgba(0, 0, 0, 0.10);
+            --shadow-5: rgba(0, 0, 0, 0.05);
+
+            /* 祖传动画曲线 */
+            --default-bezier-color: cubic-bezier(.6, 0, .5, 1);
+            --default-bezier-start: cubic-bezier(.5, 0, .25, 1);
+            --default-bezier-end: cubic-bezier(.5, 0, .5, 1);
+            --default-bezier-nav-start: cubic-bezier(.25, .1, 0, 1);
+            --default-bezier-nav-end: cubic-bezier(.5, .25, .4, 1);
+            --default-bezier-ios-start: cubic-bezier(.25, 1, .25, 1);
+            --default-bezier-ios-end: cubic-bezier(.48, 1.23, .25, 1);
+            --default-bezier-apple-nav: cubic-bezier(0.28, 0.11, 0.32, 1);
+        }
+
+        .box8 {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border-radius: 100%;
+            border: 4px rgb(105, 105, 105) solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box8-line-box {
+            position: relative;
+            width: 480px;
+            height: 480px;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box8-line-long-out {
+            position: absolute;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .box8-line-long {
+            width: 6px;
+            height: 24px;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            border-radius: 10px;
+            background-color: var(--box-black-5);
+            transition: 1s var(--default-bezier-ios-start);
+        }
+
+        .box8-line-long-out:nth-child(2) {
+            transform: rotate(30deg);
+        }
+
+        .box8-line-long-out:nth-child(3) {
+            transform: rotate(60deg);
+        }
+
+        .box8-line-long-out:nth-child(4) {
+            transform: rotate(90deg);
+        }
+
+        .box8-line-long-out:nth-child(5) {
+            transform: rotate(120deg);
+        }
+
+        .box8-line-long-out:nth-child(6) {
+            transform: rotate(150deg);
+        }
+
+        .box8-hand {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box8-hand-t {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .box8-hand-t-h {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            animation: 216000s box8-hand-hm linear infinite;
+        }
+
+        .box8-hand-t-m {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            animation: 3600s box8-hand-hm linear infinite;
+        }
+
+        .box8-hand-t-s {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            animation: 60s box8-hand-s cubic-bezier(.03, 1.31, 0, .96) infinite;
+        }
+
+        @keyframes box8-hand-hm {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes box8-hand-s {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            1.666666666% {
+                transform: rotate(6deg);
+            }
+
+            3.333333333% {
+                transform: rotate(12deg);
+            }
+
+            5% {
+                transform: rotate(18deg);
+            }
+
+            6.666666666% {
+                transform: rotate(24deg);
+            }
+
+            8.333333333% {
+                transform: rotate(30deg);
+            }
+
+            10% {
+                transform: rotate(36deg);
+            }
+
+            11.666666666% {
+                transform: rotate(42deg);
+            }
+
+            13.333333333% {
+                transform: rotate(48deg);
+            }
+
+            15% {
+                transform: rotate(54deg);
+            }
+
+            16.666666666% {
+                transform: rotate(60deg);
+            }
+
+            18.333333333% {
+                transform: rotate(66deg);
+            }
+
+            20% {
+                transform: rotate(72deg);
+            }
+
+            21.666666666% {
+                transform: rotate(78deg);
+            }
+
+            23.333333333% {
+                transform: rotate(84deg);
+            }
+
+            25% {
+                transform: rotate(90deg);
+            }
+
+            26.666666666% {
+                transform: rotate(96deg);
+            }
+
+            28.333333333% {
+                transform: rotate(102deg);
+            }
+
+            30% {
+                transform: rotate(108deg);
+            }
+
+            31.666666666% {
+                transform: rotate(114deg);
+            }
+
+            33.333333333% {
+                transform: rotate(120deg);
+            }
+
+            35% {
+                transform: rotate(126deg);
+            }
+
+            36.666666666% {
+                transform: rotate(132deg);
+            }
+
+            38.333333333% {
+                transform: rotate(138deg);
+            }
+
+            40% {
+                transform: rotate(144deg);
+            }
+
+            41.666666666% {
+                transform: rotate(150deg);
+            }
+
+            43.333333333% {
+                transform: rotate(156deg);
+            }
+
+            45% {
+                transform: rotate(162deg);
+            }
+
+            46.666666666% {
+                transform: rotate(168deg);
+            }
+
+            48.333333333% {
+                transform: rotate(174deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+
+            51.666666666% {
+                transform: rotate(186deg);
+            }
+
+            53.333333333% {
+                transform: rotate(192deg);
+            }
+
+            55% {
+                transform: rotate(198deg);
+            }
+
+            56.666666666% {
+                transform: rotate(204deg);
+            }
+
+            58.333333333% {
+                transform: rotate(210deg);
+            }
+
+            60% {
+                transform: rotate(216deg);
+            }
+
+            61.666666666% {
+                transform: rotate(222deg);
+            }
+
+            63.333333333% {
+                transform: rotate(228deg);
+            }
+
+            65% {
+                transform: rotate(234deg);
+            }
+
+            66.666666666% {
+                transform: rotate(240deg);
+            }
+
+            68.333333333% {
+                transform: rotate(246deg);
+            }
+
+            70% {
+                transform: rotate(252deg);
+            }
+
+            71.666666666% {
+                transform: rotate(258deg);
+            }
+
+            73.333333333% {
+                transform: rotate(264deg);
+            }
+
+            75% {
+                transform: rotate(270deg);
+            }
+
+            76.666666666% {
+                transform: rotate(276deg);
+            }
+
+            78.333333333% {
+                transform: rotate(282deg);
+            }
+
+            80% {
+                transform: rotate(288deg);
+            }
+
+            81.666666666% {
+                transform: rotate(294deg);
+            }
+
+            83.333333333% {
+                transform: rotate(300deg);
+            }
+
+            85% {
+                transform: rotate(306deg);
+            }
+
+            86.666666666% {
+                transform: rotate(312deg);
+            }
+
+            88.333333333% {
+                transform: rotate(318deg);
+            }
+
+            90% {
+                transform: rotate(324deg);
+            }
+
+            91.666666666% {
+                transform: rotate(330deg);
+            }
+
+            93.333333333% {
+                transform: rotate(336deg);
+            }
+
+            95% {
+                transform: rotate(342deg);
+            }
+
+            96.666666666% {
+                transform: rotate(348deg);
+            }
+
+            98.333333333% {
+                transform: rotate(354deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+
+            /* 其实大可直接这样的(记得把动画曲线改成线性) */
+        /* to {
+            transform: rotate(360deg);
+        } */
+        }
+
+        .box8-hand-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(0deg);
+            transition: 1s var(--default-bezier-ios-start);
+        }
+
+        .box8-hand-js:first-child {
+            transform: rotate(var(--rHours));
+        }
+
+        .box8-hand-js:nth-child(2) {
+            transform: rotate(var(--rMinutes));
+        }
+
+        .box8-hand-js:nth-child(3) {
+            transform: rotate(var(--rSeconds));
+        }
+
+        .box8-h {
+            position: relative;
+            width: 14px;
+            height: 100px;
+            border-radius: 10px;
+            background-color: rgb(70, 70, 70);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 1s var(--default-bezier-ios-start);
+        }
+
+        .box8-m {
+            position: relative;
+            width: 12px;
+            height: 180px;
+            border-radius: 10px;
+            background-color: rgb(70, 70, 70);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 1s var(--default-bezier-ios-start);
+        }
+
+        .box8-s {
+            position: relative;
+            width: 8px;
+            height: 240px;
+            border-radius: 10px;
+            background-color: var(--default-color);
+            clip-path: polygon(50% 0%, 100% 92%, 50% 100%, 0 92%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            transition: 1s var(--default-bezier-ios-start);
+        }
+
+        .box8-hand-t-s::after {
+            position: absolute;
+            content: "";
+            width: 12px;
+            height: 12px;
+            background-color: var(--default-color);
+            border: 4px rgb(70, 70, 70) solid;
+            display: flex;
+            justify-self: center;
+            align-self: center;
+            transition: 1s var(--default-bezier-ios-start);
+            transform: rotate(45deg);
+        }
+
+        .box8-p {
+            position: absolute;
+            z-index: 2;
+            content: "";
+            width: 4px;
+            height: 4px;
+            border-radius: 10px;
+            background-color: rgb(70, 70, 70);
+        }
+
+        .box8-hb {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border-radius: 100%;
+            box-sizing: border-box;
+            border: 12px rgb(70, 70, 70) solid;
+            opacity: 0;
+            transform: scale(var(--box8-b));
+            transition: 1s var(--default-bezier-ios-start);
+        }
+
+        .box8-mb {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 100%;
+            box-sizing: border-box;
+            border: 2px rgb(70, 70, 70) solid;
+            opacity: 0;
+            transform: scale(var(--box8-b));
+            transition: 1s var(--default-bezier-ios-start);
+        }
+
+        .box8-sb {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 100%;
+            box-sizing: border-box;
+            border: 6px var(--default-color) solid;
+            opacity: 0;
+            transform: scale(var(--box8-b));
+            transition: 1s var(--default-bezier-ios-start);
+        }
+
+        .box8-noclip {
+            clip-path: none;
+            background-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box8" onclick="point()">
+        <div class="box8-line-box">
+            <div class="box8-line-long-out">
+                <div class="box8-line-long"></div>
+                <div class="box8-line-long"></div>
+            </div>
+            <div class="box8-line-long-out">
+                <div class="box8-line-long"></div>
+                <div class="box8-line-long"></div>
+            </div>
+            <div class="box8-line-long-out">
+                <div class="box8-line-long"></div>
+                <div class="box8-line-long"></div>
+            </div>
+            <div class="box8-line-long-out">
+                <div class="box8-line-long"></div>
+                <div class="box8-line-long"></div>
+            </div>
+            <div class="box8-line-long-out">
+                <div class="box8-line-long"></div>
+                <div class="box8-line-long"></div>
+            </div>
+            <div class="box8-line-long-out">
+                <div class="box8-line-long"></div>
+                <div class="box8-line-long"></div>
+            </div>
+        </div>
+        <div class="box8-hand">
+            <div class="box8-hand-js">
+                <div class="box8-hand-t box8-hand-t-h">
+                    <div class="box8-h">
+                    </div>
+                </div>
+            </div>
+            <div class="box8-hand-js">
+                <div class="box8-hand-t box8-hand-t-m">
+                    <div class="box8-m">
+                    </div>
+                </div>
+            </div>
+            <div class="box8-hand-js">
+                <div class="box8-hand-t box8-hand-t-s">
+                    <div class="box8-s">
+                    </div>
+                </div>
+                <div class="box8-p"></div>
+            </div>
+        </div>
+        <div class="box8-hand">
+            <div class="box8-hand-js">
+                <div class="box8-hand-t box8-hand-t-h">
+                    <div class="box8-h box8-noclip">
+                        <div class="box8-hb"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="box8-hand-js">
+                <div class="box8-hand-t box8-hand-t-m">
+                    <div class="box8-m box8-noclip">
+                        <div class="box8-mb"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="box8-hand-js">
+                <div class="box8-hand-t box8-hand-t-s">
+                    <div class="box8-s box8-noclip">
+                        <div class="box8-sb"></div>
+                    </div>
+                </div>
+                <div class="box8-p" onclick="point()"></div>
+            </div>
+        </div>
+        <script>
+            var obj = new Date();
+            var hours = obj.getHours();
+            var minutes = obj.getMinutes();
+            var seconds = obj.getSeconds();
+            if (hours > 12) {
+                hours = hours - 12;
+            } else { }
+            var rHours = hours * 30 + minutes * 0.5 + "deg";
+            var rMinutes = minutes * 6 + seconds * 0.1 + "deg";
+            var rSeconds = seconds * 6 + "deg";
+            document.documentElement.style.setProperty("--rHours", rHours);
+            document.documentElement.style.setProperty("--rMinutes", rMinutes);
+            document.documentElement.style.setProperty("--rSeconds", rSeconds);
+
+            document.documentElement.style.setProperty("--box8-b", "0");
+            var no = getComputedStyle(document.querySelectorAll(".box8-h")[1]).height;
+            console.log(no)
+            function point() {
+                var no = getComputedStyle(document.querySelectorAll(".box8-h")[1]).height;
+                if (no == "14px") {
+                    document.getElementsByClassName("box8-h")[1].style.height = "";
+                    document.getElementsByClassName("box8-m")[1].style.height = "";
+                    document.getElementsByClassName("box8-s")[1].style.height = "";
+                    document.getElementsByClassName("box8-hb")[0].style.opacity = "";
+                    document.getElementsByClassName("box8-mb")[0].style.opacity = "";
+                    document.getElementsByClassName("box8-sb")[0].style.opacity = "";
+                    document.documentElement.style.setProperty("--box8-b", "0");
+                    let arr = document.getElementsByClassName("box8-line-long");
+                    for (let i = 0, len = arr.length; i < len; i++) {
+                        document.getElementsByClassName("box8-line-long")[i].style.height = "";
+                    }
+                } else {
+                    document.getElementsByClassName("box8-h")[1].style.height = "14px";
+                    document.getElementsByClassName("box8-m")[1].style.height = "8px";
+                    document.getElementsByClassName("box8-s")[1].style.height = "4px";
+                    document.getElementsByClassName("box8-hb")[0].style.opacity = "1";
+                    document.getElementsByClassName("box8-mb")[0].style.opacity = "1";
+                    document.getElementsByClassName("box8-sb")[0].style.opacity = "1";
+                    document.documentElement.style.setProperty("--box8-b", "100%");
+                    let arr = document.getElementsByClassName("box8-line-long");
+                    for (let i = 0, len = arr.length; i < len; i++) {
+                        document.getElementsByClassName("box8-line-long")[i].style.height = "50px";
+                    }
+                }
+
+            }
+
+        </script>
+        <script>
+            var VanillaTilt = (function () {
+                'use strict';
+
+                var classCallCheck = function (instance, Constructor) {
+                    if (!(instance instanceof Constructor)) {
+                        throw new TypeError("Cannot call a class as a function");
+                    }
+                };
+
+                /**
+                 * Created by Sergiu Șandor (micku7zu) on 1/27/2017.
+                 * Original idea: https://github.com/gijsroge/tilt.js
+                 * MIT License.
+                 * Version 1.8.0
+                 */
+
+                var VanillaTilt = function () {
+                    function VanillaTilt(element) {
+                        var settings = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+                        classCallCheck(this, VanillaTilt);
+
+                        if (!(element instanceof Node)) {
+                            throw "Can't initialize VanillaTilt because " + element + " is not a Node.";
+                        }
+
+                        this.width = null;
+                        this.height = null;
+                        this.clientWidth = null;
+                        this.clientHeight = null;
+                        this.left = null;
+                        this.top = null;
+
+                        // for Gyroscope sampling
+                        this.gammazero = null;
+                        this.betazero = null;
+                        this.lastgammazero = null;
+                        this.lastbetazero = null;
+
+                        this.transitionTimeout = null;
+                        this.updateCall = null;
+                        this.event = null;
+
+                        this.updateBind = this.update.bind(this);
+                        this.resetBind = this.reset.bind(this);
+
+                        this.element = element;
+                        this.settings = this.extendSettings(settings);
+
+                        this.reverse = this.settings.reverse ? -1 : 1;
+                        this.resetToStart = VanillaTilt.isSettingTrue(this.settings["reset-to-start"]);
+                        this.glare = VanillaTilt.isSettingTrue(this.settings.glare);
+                        this.glarePrerender = VanillaTilt.isSettingTrue(this.settings["glare-prerender"]);
+                        this.fullPageListening = VanillaTilt.isSettingTrue(this.settings["full-page-listening"]);
+                        this.gyroscope = VanillaTilt.isSettingTrue(this.settings.gyroscope);
+                        this.gyroscopeSamples = this.settings.gyroscopeSamples;
+
+                        this.elementListener = this.getElementListener();
+
+                        if (this.glare) {
+                            this.prepareGlare();
+                        }
+
+                        if (this.fullPageListening) {
+                            this.updateClientSize();
+                        }
+
+                        this.addEventListeners();
+                        this.reset();
+
+                        if (this.resetToStart === false) {
+                            this.settings.startX = 0;
+                            this.settings.startY = 0;
+                        }
+                    }
+
+                    VanillaTilt.isSettingTrue = function isSettingTrue(setting) {
+                        return setting === "" || setting === true || setting === 1;
+                    };
+
+                    /**
+                     * Method returns element what will be listen mouse events
+                     * @return {Node}
+                     */
+
+
+                    VanillaTilt.prototype.getElementListener = function getElementListener() {
+                        if (this.fullPageListening) {
+                            return window.document;
+                        }
+
+                        if (typeof this.settings["mouse-event-element"] === "string") {
+                            var mouseEventElement = document.querySelector(this.settings["mouse-event-element"]);
+
+                            if (mouseEventElement) {
+                                return mouseEventElement;
+                            }
+                        }
+
+                        if (this.settings["mouse-event-element"] instanceof Node) {
+                            return this.settings["mouse-event-element"];
+                        }
+
+                        return this.element;
+                    };
+
+                    /**
+                     * Method set listen methods for this.elementListener
+                     * @return {Node}
+                     */
+
+
+                    VanillaTilt.prototype.addEventListeners = function addEventListeners() {
+                        this.onMouseEnterBind = this.onMouseEnter.bind(this);
+                        this.onMouseMoveBind = this.onMouseMove.bind(this);
+                        this.onMouseLeaveBind = this.onMouseLeave.bind(this);
+                        this.onWindowResizeBind = this.onWindowResize.bind(this);
+                        this.onDeviceOrientationBind = this.onDeviceOrientation.bind(this);
+
+                        this.elementListener.addEventListener("mouseenter", this.onMouseEnterBind);
+                        this.elementListener.addEventListener("mouseleave", this.onMouseLeaveBind);
+                        this.elementListener.addEventListener("mousemove", this.onMouseMoveBind);
+
+                        if (this.glare || this.fullPageListening) {
+                            window.addEventListener("resize", this.onWindowResizeBind);
+                        }
+
+                        if (this.gyroscope) {
+                            window.addEventListener("deviceorientation", this.onDeviceOrientationBind);
+                        }
+                    };
+
+                    /**
+                     * Method remove event listeners from current this.elementListener
+                     */
+
+
+                    VanillaTilt.prototype.removeEventListeners = function removeEventListeners() {
+                        this.elementListener.removeEventListener("mouseenter", this.onMouseEnterBind);
+                        this.elementListener.removeEventListener("mouseleave", this.onMouseLeaveBind);
+                        this.elementListener.removeEventListener("mousemove", this.onMouseMoveBind);
+
+                        if (this.gyroscope) {
+                            window.removeEventListener("deviceorientation", this.onDeviceOrientationBind);
+                        }
+
+                        if (this.glare || this.fullPageListening) {
+                            window.removeEventListener("resize", this.onWindowResizeBind);
+                        }
+                    };
+
+                    VanillaTilt.prototype.destroy = function destroy() {
+                        clearTimeout(this.transitionTimeout);
+                        if (this.updateCall !== null) {
+                            cancelAnimationFrame(this.updateCall);
+                        }
+
+                        this.reset();
+
+                        this.removeEventListeners();
+                        this.element.vanillaTilt = null;
+                        delete this.element.vanillaTilt;
+
+                        this.element = null;
+                    };
+
+                    VanillaTilt.prototype.onDeviceOrientation = function onDeviceOrientation(event) {
+                        if (event.gamma === null || event.beta === null) {
+                            return;
+                        }
+
+                        this.updateElementPosition();
+
+                        if (this.gyroscopeSamples > 0) {
+                            this.lastgammazero = this.gammazero;
+                            this.lastbetazero = this.betazero;
+
+                            if (this.gammazero === null) {
+                                this.gammazero = event.gamma;
+                                this.betazero = event.beta;
+                            } else {
+                                this.gammazero = (event.gamma + this.lastgammazero) / 2;
+                                this.betazero = (event.beta + this.lastbetazero) / 2;
+                            }
+
+                            this.gyroscopeSamples -= 1;
+                        }
+
+                        var totalAngleX = this.settings.gyroscopeMaxAngleX - this.settings.gyroscopeMinAngleX;
+                        var totalAngleY = this.settings.gyroscopeMaxAngleY - this.settings.gyroscopeMinAngleY;
+
+                        var degreesPerPixelX = totalAngleX / this.width;
+                        var degreesPerPixelY = totalAngleY / this.height;
+
+                        var angleX = event.gamma - (this.settings.gyroscopeMinAngleX + this.gammazero);
+                        var angleY = event.beta - (this.settings.gyroscopeMinAngleY + this.betazero);
+
+                        var posX = angleX / degreesPerPixelX;
+                        var posY = angleY / degreesPerPixelY;
+
+                        if (this.updateCall !== null) {
+                            cancelAnimationFrame(this.updateCall);
+                        }
+
+                        this.event = {
+                            clientX: posX + this.left,
+                            clientY: posY + this.top
+                        };
+
+                        this.updateCall = requestAnimationFrame(this.updateBind);
+                    };
+
+                    VanillaTilt.prototype.onMouseEnter = function onMouseEnter() {
+                        this.updateElementPosition();
+                        this.element.style.willChange = "transform";
+                        this.setTransition();
+                    };
+
+                    VanillaTilt.prototype.onMouseMove = function onMouseMove(event) {
+                        if (this.updateCall !== null) {
+                            cancelAnimationFrame(this.updateCall);
+                        }
+
+                        this.event = event;
+                        this.updateCall = requestAnimationFrame(this.updateBind);
+                    };
+
+                    VanillaTilt.prototype.onMouseLeave = function onMouseLeave() {
+                        this.setTransition();
+
+                        if (this.settings.reset) {
+                            requestAnimationFrame(this.resetBind);
+                        }
+                    };
+
+                    VanillaTilt.prototype.reset = function reset() {
+                        this.onMouseEnter();
+
+                        if (this.fullPageListening) {
+                            this.event = {
+                                clientX: (this.settings.startX + this.settings.max) / (2 * this.settings.max) * this.clientWidth,
+                                clientY: (this.settings.startY + this.settings.max) / (2 * this.settings.max) * this.clientHeight
+                            };
+                        } else {
+                            this.event = {
+                                clientX: this.left + (this.settings.startX + this.settings.max) / (2 * this.settings.max) * this.width,
+                                clientY: this.top + (this.settings.startY + this.settings.max) / (2 * this.settings.max) * this.height
+                            };
+                        }
+
+                        var backupScale = this.settings.scale;
+                        this.settings.scale = 1;
+                        this.update();
+                        this.settings.scale = backupScale;
+                        this.resetGlare();
+                    };
+
+                    VanillaTilt.prototype.resetGlare = function resetGlare() {
+                        if (this.glare) {
+                            this.glareElement.style.transform = "rotate(180deg) translate(-50%, -50%)";
+                            this.glareElement.style.opacity = "0";
+                        }
+                    };
+
+                    VanillaTilt.prototype.getValues = function getValues() {
+                        var x = void 0,
+                            y = void 0;
+
+                        if (this.fullPageListening) {
+                            x = this.event.clientX / this.clientWidth;
+                            y = this.event.clientY / this.clientHeight;
+                        } else {
+                            x = (this.event.clientX - this.left) / this.width;
+                            y = (this.event.clientY - this.top) / this.height;
+                        }
+
+                        x = Math.min(Math.max(x, 0), 1);
+                        y = Math.min(Math.max(y, 0), 1);
+
+                        var tiltX = (this.reverse * (this.settings.max - x * this.settings.max * 2)).toFixed(2);
+                        var tiltY = (this.reverse * (y * this.settings.max * 2 - this.settings.max)).toFixed(2);
+                        var angle = Math.atan2(this.event.clientX - (this.left + this.width / 2), -(this.event.clientY - (this.top + this.height / 2))) * (180 / Math.PI);
+
+                        return {
+                            tiltX: tiltX,
+                            tiltY: tiltY,
+                            percentageX: x * 100,
+                            percentageY: y * 100,
+                            angle: angle
+                        };
+                    };
+
+                    VanillaTilt.prototype.updateElementPosition = function updateElementPosition() {
+                        var rect = this.element.getBoundingClientRect();
+
+                        this.width = this.element.offsetWidth;
+                        this.height = this.element.offsetHeight;
+                        this.left = rect.left;
+                        this.top = rect.top;
+                    };
+
+                    VanillaTilt.prototype.update = function update() {
+                        var values = this.getValues();
+
+                        this.element.style.transform = "perspective(" + this.settings.perspective + "px) " + "rotateX(" + (this.settings.axis === "x" ? 0 : values.tiltY) + "deg) " + "rotateY(" + (this.settings.axis === "y" ? 0 : values.tiltX) + "deg) " + "scale3d(" + this.settings.scale + ", " + this.settings.scale + ", " + this.settings.scale + ")";
+
+                        if (this.glare) {
+                            this.glareElement.style.transform = "rotate(" + values.angle + "deg) translate(-50%, -50%)";
+                            this.glareElement.style.opacity = "" + values.percentageY * this.settings["max-glare"] / 100;
+                        }
+
+                        this.element.dispatchEvent(new CustomEvent("tiltChange", {
+                            "detail": values
+                        }));
+
+                        this.updateCall = null;
+                    };
+
+                    /**
+                     * Appends the glare element (if glarePrerender equals false)
+                     * and sets the default style
+                     */
+
+
+                    VanillaTilt.prototype.prepareGlare = function prepareGlare() {
+                        // If option pre-render is enabled we assume all html/css is present for an optimal glare effect.
+                        if (!this.glarePrerender) {
+                            // Create glare element
+                            var jsTiltGlare = document.createElement("div");
+                            jsTiltGlare.classList.add("js-tilt-glare");
+
+                            var jsTiltGlareInner = document.createElement("div");
+                            jsTiltGlareInner.classList.add("js-tilt-glare-inner");
+
+                            jsTiltGlare.appendChild(jsTiltGlareInner);
+                            this.element.appendChild(jsTiltGlare);
+                        }
+
+                        this.glareElementWrapper = this.element.querySelector(".js-tilt-glare");
+                        this.glareElement = this.element.querySelector(".js-tilt-glare-inner");
+
+                        if (this.glarePrerender) {
+                            return;
+                        }
+
+                        Object.assign(this.glareElementWrapper.style, {
+                            "position": "absolute",
+                            "top": "0",
+                            "left": "0",
+                            "width": "100%",
+                            "height": "100%",
+                            "overflow": "hidden",
+                            "pointer-events": "none",
+                            "border-radius": "inherit"
+                        });
+
+                        Object.assign(this.glareElement.style, {
+                            "position": "absolute",
+                            "top": "50%",
+                            "left": "50%",
+                            "pointer-events": "none",
+                            "background-image": "linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%)",
+                            "transform": "rotate(180deg) translate(-50%, -50%)",
+                            "transform-origin": "0% 0%",
+                            "opacity": "0"
+                        });
+
+                        this.updateGlareSize();
+                    };
+
+                    VanillaTilt.prototype.updateGlareSize = function updateGlareSize() {
+                        if (this.glare) {
+                            var glareSize = (this.element.offsetWidth > this.element.offsetHeight ? this.element.offsetWidth : this.element.offsetHeight) * 2;
+
+                            Object.assign(this.glareElement.style, {
+                                "width": glareSize + "px",
+                                "height": glareSize + "px"
+                            });
+                        }
+                    };
+
+                    VanillaTilt.prototype.updateClientSize = function updateClientSize() {
+                        this.clientWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+                        this.clientHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+                    };
+
+                    VanillaTilt.prototype.onWindowResize = function onWindowResize() {
+                        this.updateGlareSize();
+                        this.updateClientSize();
+                    };
+
+                    VanillaTilt.prototype.setTransition = function setTransition() {
+                        var _this = this;
+
+                        clearTimeout(this.transitionTimeout);
+                        this.element.style.transition = this.settings.speed + "ms " + this.settings.easing;
+                        if (this.glare) this.glareElement.style.transition = "opacity " + this.settings.speed + "ms " + this.settings.easing;
+
+                        this.transitionTimeout = setTimeout(function () {
+                            _this.element.style.transition = "";
+                            if (_this.glare) {
+                                _this.glareElement.style.transition = "";
+                            }
+                        }, this.settings.speed);
+                    };
+
+                    /**
+                     * Method return patched settings of instance
+                     * @param {boolean} settings.reverse - reverse the tilt direction
+                     * @param {number} settings.max - max tilt rotation (degrees)
+                     * @param {startX} settings.startX - the starting tilt on the X axis, in degrees. Default: 0
+                     * @param {startY} settings.startY - the starting tilt on the Y axis, in degrees. Default: 0
+                     * @param {number} settings.perspective - Transform perspective, the lower the more extreme the tilt gets
+                     * @param {string} settings.easing - Easing on enter/exit
+                     * @param {number} settings.scale - 2 = 200%, 1.5 = 150%, etc..
+                     * @param {number} settings.speed - Speed of the enter/exit transition
+                     * @param {boolean} settings.transition - Set a transition on enter/exit
+                     * @param {string|null} settings.axis - What axis should be enabled. Can be "x" or "y"
+                     * @param {boolean} settings.glare - if it should have a "glare" effect
+                     * @param {number} settings.max-glare - the maximum "glare" opacity (1 = 100%, 0.5 = 50%)
+                     * @param {boolean} settings.glare-prerender - false = VanillaTilt creates the glare elements for you, otherwise
+                     * @param {boolean} settings.full-page-listening - If true, parallax effect will listen to mouse move events on the whole document, not only the selected element
+                     * @param {string|object} settings.mouse-event-element - String selector or link to HTML-element what will be listen mouse events
+                     * @param {boolean} settings.reset - false = If the tilt effect has to be reset on exit
+                     * @param {boolean} settings.reset-to-start - true = On reset event (mouse leave) will return to initial start angle (if startX or startY is set)
+                     * @param {gyroscope} settings.gyroscope - Enable tilting by deviceorientation events
+                     * @param {gyroscopeSensitivity} settings.gyroscopeSensitivity - Between 0 and 1 - The angle at which max tilt position is reached. 1 = 90deg, 0.5 = 45deg, etc..
+                     * @param {gyroscopeSamples} settings.gyroscopeSamples - How many gyroscope moves to decide the starting position.
+                     */
+
+
+                    VanillaTilt.prototype.extendSettings = function extendSettings(settings) {
+                        var defaultSettings = {
+                            reverse: false,
+                            max: 15,
+                            startX: 0,
+                            startY: 0,
+                            perspective: 1000,
+                            easing: "cubic-bezier(.03,.98,.52,.99)",
+                            scale: 1,
+                            speed: 300,
+                            transition: true,
+                            axis: null,
+                            glare: false,
+                            "max-glare": 1,
+                            "glare-prerender": false,
+                            "full-page-listening": false,
+                            "mouse-event-element": null,
+                            reset: true,
+                            "reset-to-start": true,
+                            gyroscope: true,
+                            gyroscopeMinAngleX: -45,
+                            gyroscopeMaxAngleX: 45,
+                            gyroscopeMinAngleY: -45,
+                            gyroscopeMaxAngleY: 45,
+                            gyroscopeSamples: 10
+                        };
+
+                        var newSettings = {};
+                        for (var property in defaultSettings) {
+                            if (property in settings) {
+                                newSettings[property] = settings[property];
+                            } else if (this.element.hasAttribute("data-tilt-" + property)) {
+                                var attribute = this.element.getAttribute("data-tilt-" + property);
+                                try {
+                                    newSettings[property] = JSON.parse(attribute);
+                                } catch (e) {
+                                    newSettings[property] = attribute;
+                                }
+                            } else {
+                                newSettings[property] = defaultSettings[property];
+                            }
+                        }
+
+                        return newSettings;
+                    };
+
+                    VanillaTilt.init = function init(elements, settings) {
+                        if (elements instanceof Node) {
+                            elements = [elements];
+                        }
+
+                        if (elements instanceof NodeList) {
+                            elements = [].slice.call(elements);
+                        }
+
+                        if (!(elements instanceof Array)) {
+                            return;
+                        }
+
+                        elements.forEach(function (element) {
+                            if (!("vanillaTilt" in element)) {
+                                element.vanillaTilt = new VanillaTilt(element, settings);
+                            }
+                        });
+                    };
+
+                    return VanillaTilt;
+                }();
+
+                if (typeof document !== "undefined") {
+                    /* expose the class to window */
+                    window.VanillaTilt = VanillaTilt;
+
+                    /**
+                     * Auto load
+                     */
+                    VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
+                }
+
+                return VanillaTilt;
+
+            }());
+        </script>
+        <script>
+            VanillaTilt.init(document.querySelectorAll(".box8"), {
+                max: 15,
+                speed: 1000,
+            });
+        </script>
+    </div>
+</body>
+
+</html>

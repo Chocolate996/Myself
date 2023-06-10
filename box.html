@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .box {
+            width: 10rem;
+            height: 10rem;
+            border-radius: 2rem;
+            background-color: crimson;
+            transition: 0.7s cubic-bezier(.36, 1.32, .12, 1);
+        }
+
+        .box:hover {
+            width: 100vw;
+            height: 100vw;
+            transition: 1s cubic-bezier(.21, .89, .12, 1);
+        }
+
+        .txt {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <div class="txt">0.7s cubic-bezier(.36,1.32,.12,1)</div>
+    <div class="txt">1s cubic-bezier(.21, .89, .12, 1);</div>
+</body>
+
+</html>

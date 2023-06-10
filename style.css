@@ -428,7 +428,9 @@ mark.animate {
 
 .footer {
     padding: 50px 75px;
-    background-color: var(--box-white);display: flex;justify-content: center;
+    background-color: var(--box-white);
+    display: flex;
+    justify-content: center;
 }
 
 /* iThink的统一调用库 */
